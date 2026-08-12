@@ -44,3 +44,29 @@ nav a:hover {
   background-color: var(--accent);
   color: #000;
 }
+.card {
+  background-color: var(--card-bg);
+  padding: 16px;
+  border-radius: 8px;
+  max-width: 300px;
+}
+
+input, button {
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: none;
+  font-size: 14px;
+}
+
+input {
+  background-color: var(--card-bg);
+  color: var(--text);
+  margin-right: 8px;
+}
+
+button {
+  background-color: var(--accent);
+  color: #000;
+  cursor: pointer;
+  font-weight: bold;
+}

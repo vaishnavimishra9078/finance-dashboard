@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stock Analyzer</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+
+  <main>
+    <h2>Stock Analyzer</h2>
+
+    <input type="text" id="tickerInput" placeholder="Enter ticker e.g. AAPL">
+    <button id="searchBtn">Search</button>
+
+    <div id="result" class="card" style="margin-top: 16px; display: none;">
+      <h3 id="symbol"></h3>
+      <p>Price: $<span id="price"></span></p>
+      <p id="change"></p>
+    </div>
+
+    <p id="errorMsg" style="color: var(--danger); display: none;"></p>
+    <p id="errorMsg" style="color: var(--danger); display: none;"></p>
+
+  </main>
+
+  <script src="../js/stockAnalyzer.js"></script>
+<script src="../main.js"></script>
+
+</body>
+</html>

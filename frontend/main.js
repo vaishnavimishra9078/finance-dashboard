@@ -1,5 +1,3 @@
-const BACKEND_URL = "http://localhost:5000";
-
 async function checkBackend() {
     try {
         const res = await fetch(`${BACKEND_URL}/api/health`);
