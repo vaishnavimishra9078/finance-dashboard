@@ -23,13 +23,21 @@
         </nav>
     </header>
 
-    <main>
-        <h2>Company Comparison</h2>
+    
+        <main>
+    <h2>Company Comparison</h2>
 
-        <p>
-            Compare companies based on financial performance, valuation and growth.
-        </p>
-    </main>
+    <input type="text" id="ticker1" placeholder="Ticker 1 e.g. AAPL">
+    <input type="text" id="ticker2" placeholder="Ticker 2 e.g. MSFT">
+    <input type="text" id="ticker3" placeholder="Ticker 3 (optional)">
+    <button id="compareBtn">Compare</button>
+
+    <div id="comparisonResults" style="display: flex; gap: 16px; margin-top: 16px; flex-wrap: wrap;"></div>
+
+    <p id="errorMsg" style="color: var(--danger); display: none;"></p>
+  </main>
+   <script src="../main.js"></script>
+<script src="../js/comparison.js"></script>
 
 </body>
 
