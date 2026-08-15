@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Portfolio Manager</title>
+
+  <link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+
+  <header>
+    <h1>Finance Dashboard</h1>
+
+    <nav>
+      <a href="../index.html">Dashboard</a>
+      <a href="stock-analyzer.html">Stock Analyzer</a>
+      <a href="market-intelligence.html">Market Intelligence</a>
+      <a href="portfolio-manager.html">Portfolio Manager</a>
+      <a href="portfolio-settings.html">Portfolio Settings</a>
+    </nav>
+  </header>
+
+  <main>
+
+    <h2>Portfolio Manager</h2>
+
+    <!-- Add Stock -->
+    <div>
+      <input
+        type="text"
+        id="ticker"
+        placeholder="Ticker e.g. AAPL"
+      >
+
+      <input
+        type="number"
+        id="quantity"
+        placeholder="Quantity"
+        min="1"
+      >
+
+      <input
+        type="number"
+        id="buyPrice"
+        placeholder="Buy Price"
+        min="0"
+        step="0.01"
+      >
+
+      <button id="addBtn">Add Stock</button>
+    </div>
+
+    <!-- Portfolio Summary -->
+    <div
+      id="portfolioSummary"
+      class="card"
+      style="margin-top: 20px;"
+    >
+
+      <h3>Portfolio Summary</h3>
+
+      <p>
+        Total Investment:
+        <span id="totalInvestment">0.00</span>
+      </p>
+
+      <p>
+        Current Value:
+        <span id="totalValue">0.00</span>
+      </p>
+
+      <p id="totalProfitLoss">
+        Profit / Loss:
+        <span id="profitLoss">0.00</span>
+      </p>
+
+    </div>
+
+    <div
+  id="allocationSection"
+  class="card"
+  style="margin-top: 20px;"
+>
+  <h3>Portfolio Allocation</h3>
+
+  <div id="allocationResults">
+    No stocks added yet.
+  </div>
+</div>
+
+<!-- Stock Results -->
+    <div
+      id="portfolioResults"
+      style="margin-top: 20px;"
+    ></div>
+
+    <!-- Error Message -->
+    <p
+      id="errorMsg"
+      style="color: var(--danger); display: none;"
+    ></p>
+
+  </main>
+
+  <script src="../js/portfolio.js"></script>
+
+</body>
+
+</html>
