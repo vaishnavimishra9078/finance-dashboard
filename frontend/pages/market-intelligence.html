@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Market Intelligence | Finance Dashboard</title>
+
+    <link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+
+    <header>
+        <h1>Finance Dashboard</h1>
+
+        <nav>
+            <a href="../index.html">Dashboard</a>
+            <a href="stock-analyzer.html">Stock Analyzer</a>
+            <a href="market-intelligence.html">Market Intelligence</a>
+            <a href="portfolio-manager.html">Portfolio Manager</a>
+        </nav>
+    </header>
+
+    <main>
+    <h2>Market Intelligence</h2>
+
+    <p>
+        Snapshot of major indices and top stocks.
+    </p>
+
+    <div
+        id="marketGrid"
+        style="
+            display: flex;
+            gap: 16px;
+            margin-top: 16px;
+            flex-wrap: wrap;
+        "
+    ></div>
+
+    <p
+        id="errorMsg"
+        style="
+            color: var(--danger);
+            display: none;
+        "
+    ></p>
+</main>
+
+<script src="../js/main.js"></script>
+<script src="../js/marketIntel.js"></script>
+
+</body>
+
+</html>
