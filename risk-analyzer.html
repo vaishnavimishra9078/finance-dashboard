@@ -23,14 +23,44 @@
         </nav>
     </header>
 
-    <main>
-        <h2>Risk Analyzer</h2>
+   <main>
 
-        <p>
-            Understand investment risk, volatility and portfolio diversification.
-        </p>
-    </main>
+    <h2>Risk Analyzer</h2>
+
+    <p style="color:#888;">
+        Based on your current portfolio holdings.
+    </p>
+
+    <div
+        id="riskSummary"
+        style="
+            display:flex;
+            gap:16px;
+            flex-wrap:wrap;
+            margin:16px 0;
+        "
+    ></div>
+
+    <h3>Allocation Breakdown</h3>
+
+    <div
+        id="allocationList"
+        style="max-width:500px;"
+    ></div>
+
+    <p
+        id="errorMsg"
+        style="
+            color:var(--danger);
+            display:none;
+        "
+    ></p>
+
+</main>
+<script src="../js/main.js"></script>
+<script src="../js/riskAnalyzer.js"></script>
 
 </body>
 
 </html>
+
