@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Risk Analyzer | Finance Dashboard</title>
+
+    <link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+
+    <header>
+        <h1>Finance Dashboard</h1>
+
+        <nav>
+            <a href="../index.html">Dashboard</a>
+            <a href="stock-analyzer.html">Stock Analyzer</a>
+            <a href="market-intelligence.html">Market Intelligence</a>
+            <a href="portfolio-manager.html">Portfolio Manager</a>
+        </nav>
+    </header>
+
+   <main>
+
+    <h2>Risk Analyzer</h2>
+
+    <p style="color:#888;">
+        Based on your current portfolio holdings.
+    </p>
+
+    <div
+        id="riskSummary"
+        style="
+            display:flex;
+            gap:16px;
+            flex-wrap:wrap;
+            margin:16px 0;
+        "
+    ></div>
+
+    <h3>Allocation Breakdown</h3>
+
+    <div
+        id="allocationList"
+        style="max-width:500px;"
+    ></div>
+
+    <p
+        id="errorMsg"
+        style="
+            color:var(--danger);
+            display:none;
+        "
+    ></p>
+
+</main>
+<script src="../js/main.js"></script>
+<script src="../js/riskAnalyzer.js"></script>
+
+</body>
+
+</html>
+
