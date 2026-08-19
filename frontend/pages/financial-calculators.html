@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Financial Calculators | Finance Dashboard</title>
+
+    <link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+
+    <header>
+        <h1>Finance Dashboard</h1>
+
+        <nav>
+            <a href="../index.html">Dashboard</a>
+            <a href="stock-analyzer.html">Stock Analyzer</a>
+            <a href="market-intelligence.html">Market Intelligence</a>
+            <a href="portfolio-manager.html">Portfolio Manager</a>
+        </nav>
+    </header>
+
+    <main>
+        <h2>Financial Calculators</h2>
+
+<div style="display:flex; gap:8px; margin-bottom:20px; flex-wrap:wrap;">
+  <button class="calcTab" data-target="compoundCalc">
+    Compound Interest
+  </button>
+
+  <button class="calcTab" data-target="loanCalc">
+    Loan / Mortgage
+  </button>
+
+  <button class="calcTab" data-target="retirementCalc">
+    Retirement
+  </button>
+</div>
+
+<!-- Compound Interest -->
+<div id="compoundCalc" class="calcSection card" style="max-width:400px;">
+  <h3>Compound Interest</h3>
+
+  <input
+    type="number"
+    id="ciPrincipal"
+    placeholder="Initial amount ($)"
+  >
+
+  <input
+    type="number"
+    id="ciRate"
+    placeholder="Annual interest rate (%)"
+  >
+
+  <input
+    type="number"
+    id="ciYears"
+    placeholder="Years"
+  >
+
+  <input
+    type="number"
+    id="ciContribution"
+    placeholder="Monthly contribution ($)"
+  >
+
+  <button id="ciCalcBtn">Calculate</button>
+
+  <p
+    id="ciResult"
+    style="margin-top:10px; font-weight:bold;"
+  ></p>
+</div>
+
+
+<!-- Loan / Mortgage -->
+<div
+  id="loanCalc"
+  class="calcSection card"
+  style="max-width:400px; display:none;"
+>
+  <h3>Loan / Mortgage Payment</h3>
+
+  <input
+    type="number"
+    id="loanAmount"
+    placeholder="Loan amount ($)"
+  >
+
+  <input
+    type="number"
+    id="loanRate"
+    placeholder="Annual interest rate (%)"
+  >
+
+  <input
+    type="number"
+    id="loanYears"
+    placeholder="Loan term (years)"
+  >
+
+  <button id="loanCalcBtn">Calculate</button>
+
+  <p
+    id="loanResult"
+    style="margin-top:10px; font-weight:bold;"
+  ></p>
+</div>
+
+
+<!-- Retirement -->
+<div
+  id="retirementCalc"
+  class="calcSection card"
+  style="max-width:400px; display:none;"
+>
+  <h3>Retirement Savings</h3>
+
+  <input
+    type="number"
+    id="retCurrentAge"
+    placeholder="Current age"
+  >
+
+  <input
+    type="number"
+    id="retTargetAge"
+    placeholder="Retirement age"
+  >
+
+  <input
+    type="number"
+    id="retCurrentSavings"
+    placeholder="Current savings ($)"
+  >
+
+  <input
+    type="number"
+    id="retMonthly"
+    placeholder="Monthly contribution ($)"
+  >
+
+  <input
+    type="number"
+    id="retRate"
+    placeholder="Expected annual return (%)"
+  >
+
+  <button id="retCalcBtn">Calculate</button>
+
+  <p
+    id="retResult"
+    style="margin-top:10px; font-weight:bold;"
+  ></p>
+</div>
+    </main>
+    <script src="../js/main.js"></script>
+<script src="../js/financial-calculator.js"></script>
+
+</body>
+
+</html>
