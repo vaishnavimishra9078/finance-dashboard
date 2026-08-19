@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Financial Goals | Finance Dashboard</title>
+
+    <link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+
+    <header>
+        <h1>Finance Dashboard</h1>
+
+        <nav>
+            <a href="../index.html">Dashboard</a>
+            <a href="stock-analyzer.html">Stock Analyzer</a>
+            <a href="market-intelligence.html">Market Intelligence</a>
+            <a href="portfolio-manager.html">Portfolio Manager</a>
+        </nav>
+    </header>
+
+    <main>
+    <h2>Financial Goals</h2>
+
+    <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 16px;">
+        <input type="text" id="goalName" placeholder="Goal name e.g. Emergency Fund">
+        <input type="number" id="goalTarget" placeholder="Target amount ($)">
+        <input type="number" id="goalCurrent" placeholder="Current saved ($)">
+        <input type="date" id="goalDeadline">
+        <button id="addGoalBtn">Add Goal</button>
+    </div>
+
+    <div id="goalsList" style="display: flex; flex-direction: column; gap: 16px; max-width: 600px;"></div>
+
+    <p id="errorMsg" style="color: var(--danger); display: none;"></p>
+</main>
+<script src="../js/main.js"></script>
+<script src="../js/goals.js"></script>
+
+</body>
+
+</html>
