@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>News Sentiment | Finance Dashboard</title>
+
+    <link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+
+   
+
+    <header>
+
+        <h1>Finance Dashboard</h1>
+
+        <nav>
+
+            <a href="../index.html">
+                Dashboard
+            </a>
+
+            <a href="stock-analyzer.html">
+                Stock Analyzer
+            </a>
+
+            <a href="market-intelligence.html">
+                Market Intelligence
+            </a>
+
+            <a href="company-comparison.html">
+                Compare
+            </a>
+
+            <a href="portfolio-manager.html">
+                Portfolio Manager
+            </a>
+
+            <a href="portfolio-settings.html">
+                Portfolio Settings
+            </a>
+
+            <a href="news-sentiment.html">
+                News & Sentiment
+            </a>
+
+        </nav>
+
+    </header>
+
+<main>
+  <h2>News & Sentiment</h2>
+
+  <input
+    type="text"
+    id="newsQuery"
+    placeholder="Search news e.g. AAPL, stock market"
+  >
+
+  <button id="newsSearchBtn">Search</button>
+
+  <div
+    id="newsResults"
+    style="margin-top: 16px; display: flex; flex-direction: column; gap: 10px; max-width: 700px;"
+  ></div>
+
+  <p
+    id="errorMsg"
+    style="color: var(--danger); display: none;"
+  ></p>
+</main>
+
+    <script src="../js/main.js"></script>
+<script src="../js/newsSentiment.js"></script>
+
+
+
+</body>
+
+</html>

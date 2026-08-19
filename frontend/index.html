@@ -2,39 +2,606 @@
 <html lang="en">
 
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Finance Dashboard</title>
-    <link rel="stylesheet" href="style.css">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>FinSight | Finance Intelligence Dashboard</title>
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
 </head>
 
-<body>
 
-    <header>
-        <h1>Finance Dashboard</h1>
-        <h2 id="welcome-msg">Connecting to backend </h2>
+<body class="home-page">
 
-        
-            <nav>
-    <a href="index.html">Dashboard</a>
-    <a href="pages/stock-analyzer.html">Stock Analyzer</a>
-    <a href="pages/market-intelligence.html">Market Intelligence</a>
-    <a href="pages/company-comparison.html">Compare</a>
-    <a href="pages/portfolio-manager.html">Portfolio</a>
-    <a href="pages/ai-assistant.html">AI Assistant</a>
-    <a href="pages/risk-analyzer.html">Risk</a>
-    <a href="pages/news-sentiment.html">News</a>
-    <a href="pages/financial-goals.html">Goals</a>
-    <a href="pages/financial-calculator.html">Calculators</a>
-    <a href="pages/investment-simulator.html">Simulator</a>
-    <a href="pages/learning-hub.html">Learn</a>
-    <a href="pages/portfolio-settings.html">Portfolio Settings</a>
-</nav>
+
+    <!-- BACKGROUND EFFECTS -->
+
+    <div class="background-grid"></div>
+
+    <div class="background-glow glow-one"></div>
+
+    <div class="background-glow glow-two"></div>
+
+
+    <!-- HEADER -->
+
+    <header class="main-header">
+
+        <div class="brand">
+
+            <div class="brand-logo">
+                F
+            </div>
+
+            <div>
+
+                <h1>
+                    FinSight
+                </h1>
+
+                <span>
+                    Finance Intelligence
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <nav>
+
+            <a
+                href="index.html"
+                class="active"
+            >
+                Dashboard
+            </a>
+
+            <a href="pages/stock-analyzer.html">
+                Stock Analyzer
+            </a>
+
+            <a href="pages/market-intelligence.html">
+                Market Intelligence
+            </a>
+
+            <a href="pages/company-comparison.html">
+                Compare
+            </a>
+
+            <a href="pages/portfolio-manager.html">
+                Portfolio
+            </a>
+
+            <a href="pages/risk-analyzer.html">
+                Risk
+            </a>
+
+            <a href="pages/news-sentiment.html">
+                News
+            </a>
+
+            <a href="pages/financial-goals.html">
+                Goals
+            </a>
+
+            <a href="pages/financial-calculator.html">
+                Calculators
+            </a>
+
+            <a href="pages/investment-simulator.html">
+                Simulator
+            </a>
+
+            <a href="pages/learning-hub.html">
+                Learn
+            </a>
+
+            <a href="pages/profile-settings.html">
+                Settings
+            </a>
+
+        </nav>
+
     </header>
 
-    <main>
-        <p id="backend-status">Loading...</p>
+
+    <!-- MAIN -->
+
+    <main class="home-main">
+
+
+        <!-- HERO -->
+
+        <section class="hero-section">
+
+
+            <!-- HERO TEXT -->
+
+            <div class="hero-content">
+
+                <div class="hero-badge">
+
+                    <span class="pulse-dot"></span>
+
+                    INTELLIGENT FINANCE PLATFORM
+
+                </div>
+
+
+                <h2>
+
+                    Turn Market Data Into
+
+                    <span>
+                        Smarter Decisions.
+                    </span>
+
+                </h2>
+
+
+                <p class="hero-description">
+
+                    Analyze stocks, compare companies,
+                    monitor your portfolio, understand
+                    market sentiment and make data-driven
+                    investment decisions from one intelligent
+                    platform.
+
+                </p>
+
+
+                <div class="hero-buttons">
+
+                    <a
+                        href="pages/stock-analyzer.html"
+                        class="primary-button"
+                    >
+
+                        Explore Markets
+
+                        <span>
+                            →
+                        </span>
+
+                    </a>
+
+
+                    <a
+                        href="pages/portfolio-manager.html"
+                        class="secondary-button"
+                    >
+
+                        View Portfolio
+
+                    </a>
+
+                </div>
+
+
+                <div
+                    id="backend-status"
+                    class="connection-status"
+                >
+
+                    <span class="status-dot"></span>
+
+                    Connecting to finance engine...
+
+                </div>
+
+
+            </div>
+
+
+            <!-- 3D VISUAL -->
+
+            <div class="hero-visual">
+
+
+                <!-- FLOATING CARDS -->
+
+
+                <div class="floating-card market-card">
+
+                    <div class="floating-icon">
+                        📈
+                    </div>
+
+                    <div>
+
+                        <span>
+                            Market Trend
+                        </span>
+
+                        <strong>
+                            +8.42%
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <div class="floating-card portfolio-card">
+
+                    <div class="floating-icon">
+                        💼
+                    </div>
+
+                    <div>
+
+                        <span>
+                            Portfolio
+                        </span>
+
+                        <strong>
+                            ₹1,107.40
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <div class="floating-card ai-card">
+
+                    <div class="floating-icon">
+                        🧠
+                    </div>
+
+                    <div>
+
+                        <span>
+                            AI Insight
+                        </span>
+
+                        <strong>
+                            Bullish
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <!-- 3D ORB -->
+
+                <div class="finance-orb">
+
+                    <div class="orb-ring ring-one"></div>
+
+                    <div class="orb-ring ring-two"></div>
+
+                    <div class="orb-ring ring-three"></div>
+
+
+                    <div class="orb-core">
+
+                        <span>
+                            $
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+        </section>
+
+
+        <!-- STATS -->
+
+        <section class="stats-section">
+
+
+            <div class="stat-box">
+
+                <span class="stat-number">
+                    01
+                </span>
+
+                <span class="stat-label">
+                    Stock Intelligence
+                </span>
+
+            </div>
+
+
+            <div class="stat-box">
+
+                <span class="stat-number">
+                    02
+                </span>
+
+                <span class="stat-label">
+                    Portfolio Analytics
+                </span>
+
+            </div>
+
+
+            <div class="stat-box">
+
+                <span class="stat-number">
+                    03
+                </span>
+
+                <span class="stat-label">
+                    Risk Analysis
+                </span>
+
+            </div>
+
+
+            <div class="stat-box">
+
+                <span class="stat-number">
+                    04
+                </span>
+
+                <span class="stat-label">
+                    Market Intelligence
+                </span>
+
+            </div>
+
+
+        </section>
+
+
+        <!-- FEATURES -->
+
+        <section class="features-section">
+
+
+            <div class="section-intro">
+
+                <span>
+                    POWERFUL TOOLS
+                </span>
+
+                <h2>
+                    Everything You Need
+                    To Understand Markets
+                </h2>
+
+            </div>
+
+
+            <div class="feature-grid">
+
+
+                <a
+                    href="pages/stock-analyzer.html"
+                    class="feature-card"
+                >
+
+                    <div class="feature-number">
+                        01
+                    </div>
+
+                    <div class="feature-icon">
+                        📊
+                    </div>
+
+                    <h3>
+                        Stock Analyzer
+                    </h3>
+
+                    <p>
+                        Analyze stock prices,
+                        changes and market performance.
+                    </p>
+
+                    <span class="feature-arrow">
+                        →
+                    </span>
+
+                </a>
+
+
+                <a
+                    href="pages/company-comparison.html"
+                    class="feature-card"
+                >
+
+                    <div class="feature-number">
+                        02
+                    </div>
+
+                    <div class="feature-icon">
+                        ⚖️
+                    </div>
+
+                    <h3>
+                        Company Comparison
+                    </h3>
+
+                    <p>
+                        Compare companies and
+                        identify stronger opportunities.
+                    </p>
+
+                    <span class="feature-arrow">
+                        →
+                    </span>
+
+                </a>
+
+
+                <a
+                    href="pages/market-intelligence.html"
+                    class="feature-card"
+                >
+
+                    <div class="feature-number">
+                        03
+                    </div>
+
+                    <div class="feature-icon">
+                        🌐
+                    </div>
+
+                    <h3>
+                        Market Intelligence
+                    </h3>
+
+                    <p>
+                        Understand market trends,
+                        movements and opportunities.
+                    </p>
+
+                    <span class="feature-arrow">
+                        →
+                    </span>
+
+                </a>
+
+
+                <a
+                    href="pages/risk-analyzer.html"
+                    class="feature-card"
+                >
+
+                    <div class="feature-number">
+                        04
+                    </div>
+
+                    <div class="feature-icon">
+                        🛡️
+                    </div>
+
+                    <h3>
+                        Risk Analyzer
+                    </h3>
+
+                    <p>
+                        Evaluate portfolio risk
+                        and investment exposure.
+                    </p>
+
+                    <span class="feature-arrow">
+                        →
+                    </span>
+
+                </a>
+
+
+                <a
+                    href="pages/news-sentiment.html"
+                    class="feature-card"
+                >
+
+                    <div class="feature-number">
+                        05
+                    </div>
+
+                    <div class="feature-icon">
+                        📰
+                    </div>
+
+                    <h3>
+                        News Sentiment
+                    </h3>
+
+                    <p>
+                        Understand how financial
+                        news affects market sentiment.
+                    </p>
+
+                    <span class="feature-arrow">
+                        →
+                    </span>
+
+                </a>
+
+
+                <a
+                    href="pages/investment-simulator.html"
+                    class="feature-card"
+                >
+
+                    <div class="feature-number">
+                        06
+                    </div>
+
+                    <div class="feature-icon">
+                        🚀
+                    </div>
+
+                    <h3>
+                        Investment Simulator
+                    </h3>
+
+                    <p>
+                        Explore investment scenarios
+                        before making decisions.
+                    </p>
+
+                    <span class="feature-arrow">
+                        →
+                    </span>
+
+                </a>
+
+
+            </div>
+
+        </section>
+
+
+        <!-- CTA -->
+
+        <section class="final-cta">
+
+            <div>
+
+                <span>
+                    BUILD YOUR STRATEGY
+                </span>
+
+                <h2>
+                    Your Financial Intelligence
+                    Starts Here.
+                </h2>
+
+            </div>
+
+
+            <a
+                href="pages/portfolio-manager.html"
+                class="primary-button"
+            >
+
+                Open Portfolio
+
+                <span>
+                    →
+                </span>
+
+            </a>
+            <a href="pages/news-sentiment.html">
+             News & Sentiment
+            </a>
+
+        </section>
+
+
     </main>
+
 
     <script src="main.js"></script>
 
