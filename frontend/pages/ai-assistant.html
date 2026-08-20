@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AI Assistant | Finance Dashboard</title>
+
+    <link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+
+    <header>
+        <h1>Finance Dashboard</h1>
+
+        <nav>
+            <a href="../index.html">Dashboard</a>
+            <a href="stock-analyzer.html">Stock Analyzer</a>
+            <a href="market-intelligence.html">Market Intelligence</a>
+            <a href="portfolio-manager.html">Portfolio Manager</a>
+        </nav>
+    </header>
+
+    <main>
+    <h2>AI Financial Assistant</h2>
+
+    <p style="color:#888;">
+        Ask questions about investing, finance, and your portfolio.
+    </p>
+
+    <div style="max-width:700px; margin-top:20px;">
+
+        <div id="chatBox"
+             class="card"
+             style="height:400px; overflow-y:auto; margin-bottom:12px;">
+
+            <div style="margin-bottom:12px;">
+                <strong>AI Assistant:</strong>
+                <p style="margin:4px 0;">
+                    Hello! I'm your financial assistant.
+                    Ask me a question to get started.
+                </p>
+            </div>
+
+        </div>
+
+        <div style="display:flex; gap:8px;">
+
+            <input
+                type="text"
+                id="userMessage"
+                placeholder="Ask a finance question..."
+                style="flex:1;"
+            >
+
+            <button id="sendBtn">
+                Send
+            </button>
+
+        </div>
+
+        <p id="aiError"
+           style="color:var(--danger); display:none;">
+        </p>
+
+    </div>
+</main>
+<script src="../js/main.js"></script>
+<script src="../js/aiAssistant.js"></script>
+
+</body>
+
+</html>
