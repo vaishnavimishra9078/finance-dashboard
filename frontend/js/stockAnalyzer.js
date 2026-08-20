@@ -1,4 +1,4 @@
-const BACKEND_URL = 'http://localhost:5000';
+const BACKEND_URL = 'https://finance-dashboard-api-yoye.onrender.com';
 
 document.getElementById('searchBtn').addEventListener('click', async () => {
   const ticker = document.getElementById('tickerInput').value.trim().toUpperCase();

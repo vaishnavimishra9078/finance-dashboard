@@ -1,4 +1,4 @@
-const DASHBOARD_BACKEND_URL = 'http://localhost:5000';
+const DASHBOARD_BACKEND_URL = 'https://finance-dashboard-api-yoye.onrender.com';
 
 async function loadDashboardSummary() {
 

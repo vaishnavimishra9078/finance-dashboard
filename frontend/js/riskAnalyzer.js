@@ -1,4 +1,4 @@
-const BACKEND_URL = "http://localhost:5000";
+const BACKEND_URL = "https://finance-dashboard-api-yoye.onrender.com";
 
 // Your existing Portfolio Manager uses "portfolio"
 const STORAGE_KEY = "portfolio";
