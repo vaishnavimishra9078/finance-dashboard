@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Investment Simulator | Finance Dashboard</title>
+
+    <link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+
+    <header>
+        <h1>Finance Dashboard</h1>
+
+        <nav>
+            <a href="../index.html">Dashboard</a>
+            <a href="stock-analyzer.html">Stock Analyzer</a>
+            <a href="market-intelligence.html">Market Intelligence</a>
+            <a href="portfolio-manager.html">Portfolio Manager</a>
+        </nav>
+    </header>
+
+   <main>
+    <h2>Investment Simulator</h2>
+
+    <p style="color:#888;">
+        See what an investment would be worth today.
+    </p>
+
+    <div style="display:flex; gap:8px; flex-wrap:wrap; margin:16px 0;">
+
+        <input
+            type="text"
+            id="simTicker"
+            placeholder="Ticker e.g. AAPL"
+        >
+
+        <input
+            type="number"
+            id="simAmount"
+            placeholder="Amount invested ($)"
+        >
+
+        <input
+            type="date"
+            id="simDate"
+        >
+
+        <button id="simRunBtn">
+            Simulate
+        </button>
+
+    </div>
+
+    <div
+        id="simResult"
+        class="card"
+        style="max-width:400px; display:none;"
+    ></div>
+
+    <p
+        id="errorMsg"
+        style="color:var(--danger); display:none;"
+    ></p>
+</main>
+<script src="../js/main.js"></script>
+<script src="../js/simulator.js"></script>
+
+</body>
+
+</html>
