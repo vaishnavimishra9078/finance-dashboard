@@ -5,6 +5,250 @@ const TWELVE_DATA_API_KEY = process.env.TWELVE_DATA_API_KEY;
 
 
 // =====================================================
+// HISTORICAL STOCK PRICE
+// GET /api/stocks/AAPL/history/2020-01-02
+// =====================================================
+
+router.get("/:ticker/history/:date", async (req, res) => {
+
+  try {
+
+    const ticker = req.params.ticker.toUpperCase();
+    const date = req.params.date;
+
+    console.log("Historical request:", ticker, date);
+
+
+    // ---------------------------------------------
+    // Validate date
+    // ---------------------------------------------
+
+    const selectedDate = new Date(date + "T00:00:00");
+
+    if (isNaN(selectedDate.getTime())) {
+
+      return res.status(400).json({
+        error: "Invalid date."
+      });
+
+    }
+
+
+    // ---------------------------------------------
+    // Create date range around selected date
+    // ---------------------------------------------
+
+    const startDate = new Date(selectedDate);
+    startDate.setDate(startDate.getDate() - 7);
+
+    const endDate = new Date(selectedDate);
+    endDate.setDate(endDate.getDate() + 7);
+
+
+    const formatDate = (d) => {
+      return d.toISOString().split("T")[0];
+    };
+
+
+    // ---------------------------------------------
+    // Request historical data
+    // ---------------------------------------------
+
+    const historicalUrl =
+      `https://api.twelvedata.com/time_series` +
+      `?symbol=${encodeURIComponent(ticker)}` +
+      `&interval=1day` +
+      `&start_date=${formatDate(startDate)}` +
+      `&end_date=${formatDate(endDate)}` +
+      `&apikey=${TWELVE_DATA_API_KEY}`;
+
+
+    console.log("Historical URL:", historicalUrl);
+
+
+    const historicalResponse =
+      await fetch(historicalUrl);
+
+
+    const historicalData =
+      await historicalResponse.json();
+
+
+    console.log(
+      "Historical API response:",
+      historicalData
+    );
+
+
+    // ---------------------------------------------
+    // Check Twelve Data response
+    // ---------------------------------------------
+
+    if (historicalData.status === "error") {
+
+      console.error(
+        "Twelve Data historical error:",
+        historicalData
+      );
+
+      return res.status(400).json({
+        error:
+          historicalData.message ||
+          "Historical data unavailable."
+      });
+
+    }
+
+
+    if (
+      !historicalData.values ||
+      historicalData.values.length === 0
+    ) {
+
+      return res.status(404).json({
+        error:
+          "No historical data available near this date."
+      });
+
+    }
+
+
+    // ---------------------------------------------
+    // Find closest trading day
+    // ---------------------------------------------
+
+    let closestValue =
+      historicalData.values[0];
+
+    let smallestDifference =
+      Math.abs(
+        new Date(
+          closestValue.datetime
+        ).getTime() -
+        selectedDate.getTime()
+      );
+
+
+    for (
+      let i = 1;
+      i < historicalData.values.length;
+      i++
+    ) {
+
+      const current =
+        historicalData.values[i];
+
+      const difference =
+        Math.abs(
+          new Date(
+            current.datetime
+          ).getTime() -
+          selectedDate.getTime()
+        );
+
+
+      if (difference < smallestDifference) {
+
+        smallestDifference =
+          difference;
+
+        closestValue =
+          current;
+
+      }
+
+    }
+
+
+    const priceOnDate =
+      parseFloat(
+        closestValue.close
+      );
+
+
+    // ---------------------------------------------
+    // Get latest price
+    // ---------------------------------------------
+
+    const latestUrl =
+      `https://api.twelvedata.com/quote` +
+      `?symbol=${encodeURIComponent(ticker)}` +
+      `&apikey=${TWELVE_DATA_API_KEY}`;
+
+
+    const latestResponse =
+      await fetch(latestUrl);
+
+
+    const latestData =
+      await latestResponse.json();
+
+
+    console.log(
+      "Latest price response:",
+      latestData
+    );
+
+
+    if (latestData.status === "error") {
+
+      return res.status(400).json({
+        error:
+          latestData.message ||
+          "Could not fetch latest price."
+      });
+
+    }
+
+
+    const latestPrice =
+      parseFloat(
+        latestData.close
+      );
+
+
+    // ---------------------------------------------
+    // Send result
+    // ---------------------------------------------
+
+    res.json({
+
+      ticker: ticker,
+
+      dateRequested:
+        closestValue.datetime,
+
+      priceOnDate:
+        priceOnDate,
+
+      latestDate:
+        latestData.datetime ||
+        new Date().toISOString().split("T")[0],
+
+      latestPrice:
+        latestPrice
+
+    });
+
+
+  } catch (error) {
+
+    console.error(
+      "Historical stock route error:",
+      error
+    );
+
+    res.status(500).json({
+      error:
+        "Failed to fetch historical stock data"
+    });
+
+  }
+
+});
+
+
+// =====================================================
 // CURRENT STOCK PRICE
 // GET /api/stocks/AAPL
 // =====================================================
@@ -16,12 +260,15 @@ router.get("/:ticker", async (req, res) => {
     const ticker =
       req.params.ticker.toUpperCase();
 
+
     const url =
       `https://api.twelvedata.com/quote?symbol=${encodeURIComponent(ticker)}` +
       `&apikey=${TWELVE_DATA_API_KEY}`;
 
+
     const response =
       await fetch(url);
+
 
     const data =
       await response.json();
@@ -72,203 +319,6 @@ router.get("/:ticker", async (req, res) => {
   }
 
 });
-
-
-// =====================================================
-// HISTORICAL STOCK PRICE
-// GET /api/stocks/AAPL/history/2025-01-02
-// =====================================================
-
-router.get(
-  "/:ticker/history/:date",
-  async (req, res) => {
-
-    try {
-
-      const ticker =
-        req.params.ticker.toUpperCase();
-
-      const date =
-        req.params.date;
-
-
-      console.log(
-        `Historical request: ${ticker} on ${date}`
-      );
-
-
-      // ---------------------------------------------
-      // Get historical price
-      // ---------------------------------------------
-
-      const requestedDate = new Date(date);
-
-const startDate = new Date(requestedDate);
-startDate.setDate(startDate.getDate() - 5);
-
-const endDate = new Date(requestedDate);
-endDate.setDate(endDate.getDate() + 5);
-
-const formatDate = (d) => {
-  return d.toISOString().split("T")[0];
-};
-
-const historicalUrl =
-  `https://api.twelvedata.com/time_series` +
-  `?symbol=${encodeURIComponent(ticker)}` +
-  `&interval=1day` +
-  `&start_date=${formatDate(startDate)}` +
-  `&end_date=${formatDate(endDate)}` +
-  `&apikey=${TWELVE_DATA_API_KEY}`;
-
-      const historicalData =
-        await historicalResponse.json();
-
-
-      console.log(
-        "Historical data:",
-        historicalData
-      );
-
-
-      if (
-        historicalData.status === "error"
-      ) {
-
-        return res.status(400).json({
-
-          error:
-            historicalData.message ||
-            "Could not find historical price"
-
-        });
-
-      }
-
-
-      if (
-        !historicalData.values ||
-        historicalData.values.length === 0
-      ) {
-
-        return res.status(404).json({
-
-          error:
-            "No historical data available for this date."
-
-        });
-
-      }
-
-
-      // First historical result
-     const requestedTimestamp =
-  new Date(date).getTime();
-
-const closestValue =
-  historicalData.values.reduce((closest, current) => {
-
-    const currentTimestamp =
-      new Date(current.datetime).getTime();
-
-    const closestTimestamp =
-      new Date(closest.datetime).getTime();
-
-    return Math.abs(currentTimestamp - requestedTimestamp) <
-      Math.abs(closestTimestamp - requestedTimestamp)
-        ? current
-        : closest;
-
-  });
-
-const historicalPrice =
-  parseFloat(closestValue.close);
-
-const actualHistoricalDate =
-  closestValue.datetime;
-
-
-      // ---------------------------------------------
-      // Get latest price
-      // ---------------------------------------------
-
-      const latestUrl =
-        `https://api.twelvedata.com/quote` +
-        `?symbol=${encodeURIComponent(ticker)}` +
-        `&apikey=${TWELVE_DATA_API_KEY}`;
-
-
-      const latestResponse =
-        await fetch(latestUrl);
-
-
-      const latestData =
-        await latestResponse.json();
-
-
-      if (
-        latestData.status === "error"
-      ) {
-
-        return res.status(400).json({
-
-          error:
-            latestData.message ||
-            "Could not fetch latest price"
-
-        });
-
-      }
-
-
-      const latestPrice =
-        parseFloat(
-          latestData.close
-        );
-
-
-      // ---------------------------------------------
-      // Send simulator data
-      // ---------------------------------------------
-
-      res.json({
-
-        ticker: ticker,
-
-       dateRequested: actualHistoricalDate,
-
-        priceOnDate: historicalPrice,
-
-        latestDate:
-          latestData.datetime ||
-          new Date()
-            .toISOString()
-            .split("T")[0],
-
-        latestPrice: latestPrice
-
-      });
-
-
-    } catch (error) {
-
-      console.error(
-        "Historical stock route error:",
-        error
-      );
-
-
-      res.status(500).json({
-
-        error:
-          "Failed to fetch historical stock data"
-
-      });
-
-    }
-
-  }
-);
 
 
 module.exports = router;
