@@ -1,76 +1,290 @@
-const chatBox = document.getElementById("chatBox");
-const userMessage = document.getElementById("userMessage");
-const sendBtn = document.getElementById("sendBtn");
-const aiError = document.getElementById("aiError");
+const aiQuestion = document.getElementById("aiQuestion");
+const aiAskButton = document.getElementById("aiAskButton");
 
-function addMessage(sender, message) {
-    const messageDiv = document.createElement("div");
 
-    messageDiv.style.marginBottom = "12px";
+// ==========================================
+// CREATE RESPONSE AREA
+// ==========================================
 
-    messageDiv.innerHTML = `
-        <strong>${sender}:</strong>
-        <p style="margin:4px 0;">${message}</p>
+function createResponseArea() {
+
+    let response = document.getElementById("aiResponse");
+
+    if (!response) {
+
+        response = document.createElement("div");
+
+        response.id = "aiResponse";
+
+        response.innerHTML = `
+            <div class="ai-response-top">
+
+                <div class="ai-response-brand">
+
+                    <span class="ai-response-orb">
+                        ✦
+                    </span>
+
+                    <div>
+                        <strong>Finny AI</strong>
+                        <small>Financial Intelligence</small>
+                    </div>
+
+                </div>
+
+                <span class="ai-response-label">
+                    AI RESPONSE
+                </span>
+
+            </div>
+
+            <div class="ai-response-text"></div>
+        `;
+
+        const askArea =
+            document.querySelector(".ask-area");
+
+        if (askArea) {
+            askArea.appendChild(response);
+        }
+    }
+
+    return response;
+}
+
+
+// ==========================================
+// SHOW THINKING
+// ==========================================
+
+function showThinking() {
+
+    const response =
+        createResponseArea();
+
+    const text =
+        response.querySelector(
+            ".ai-response-text"
+        );
+
+    text.innerHTML = `
+        <span class="thinking-text">
+            Finny is thinking
+            <span class="thinking-dots">•••</span>
+        </span>
     `;
 
-    chatBox.appendChild(messageDiv);
-    chatBox.scrollTop = chatBox.scrollHeight;
+    response.classList.add(
+        "show-ai-response"
+    );
 }
 
-function getAIResponse(message) {
-    const text = message.toLowerCase();
 
-    if (text.includes("stock")) {
-        return "Stocks represent ownership in companies. Their prices can rise or fall based on company performance, economic conditions, and investor sentiment.";
-    }
+// ==========================================
+// SHOW ANSWER
+// ==========================================
 
-    if (text.includes("diversif")) {
-        return "Diversification means spreading investments across different assets, sectors, or companies instead of relying heavily on one investment.";
-    }
+function showAnswer(answer) {
 
-    if (text.includes("risk")) {
-        return "Investment risk is the possibility that an investment loses value or performs differently than expected. Your time horizon and goals are important when considering risk.";
-    }
+    const response =
+        createResponseArea();
 
-    if (text.includes("portfolio")) {
-        return "A portfolio is a collection of investments such as stocks, funds, or other assets. Diversifying a portfolio can help manage concentration risk.";
-    }
+    const text =
+        response.querySelector(
+            ".ai-response-text"
+        );
 
-    if (text.includes("pe ratio") || text.includes("p/e")) {
-        return "The P/E ratio compares a company's share price with its earnings per share. It is commonly used to compare how highly investors value companies relative to their earnings.";
-    }
+    text.textContent = answer;
 
-    if (text.includes("dividend")) {
-        return "A dividend is a payment that some companies make to shareholders, usually from company profits.";
-    }
-
-    return "I can help explain basic investing topics such as stocks, portfolios, diversification, risk, dividends, and financial metrics.";
+    response.classList.add(
+        "show-ai-response"
+    );
 }
 
-sendBtn.addEventListener("click", () => {
-    const message = userMessage.value.trim();
 
-    if (!message) {
-        aiError.textContent = "Please enter a question.";
-        aiError.style.display = "block";
+// ==========================================
+// ASK OPENAI THROUGH YOUR BACKEND
+// ==========================================
+
+async function askAI(question) {
+
+    if (!question.trim()) {
+
+        aiQuestion.focus();
+
         return;
     }
 
-    aiError.style.display = "none";
+    showThinking();
 
-    addMessage("You", message);
+    try {
 
-    userMessage.value = "";
+        const response = await fetch(
+            "http://localhost:5000/api/ai",
+            {
+                method: "POST",
 
-    const response = getAIResponse(message);
+                headers: {
+                    "Content-Type":
+                        "application/json"
+                },
 
-    setTimeout(() => {
-        addMessage("AI Assistant", response);
-    }, 400);
-});
+                body: JSON.stringify({
+                    message: question
+                })
+            }
+        );
 
-userMessage.addEventListener("keydown", (event) => {
-    if (event.key === "Enter") {
-        sendBtn.click();
+
+        const data =
+            await response.json();
+
+
+        if (!response.ok) {
+
+            throw new Error(
+                data.error ||
+                "AI request failed."
+            );
+
+        }
+
+
+        showAnswer(
+            data.answer
+        );
+
+
+    } catch (error) {
+
+        console.error(
+            "AI Assistant Error:",
+            error
+        );
+
+        showAnswer(
+            "Sorry, I couldn't connect to Finny AI right now. Please make sure your backend server is running."
+        );
+
     }
-});
+
+}
+
+
+// ==========================================
+// ASK BUTTON
+// ==========================================
+
+if (aiAskButton) {
+
+    aiAskButton.addEventListener(
+        "click",
+        () => {
+
+            askAI(
+                aiQuestion.value.trim()
+            );
+
+        }
+    );
+
+}
+
+
+// ==========================================
+// ENTER KEY
+// ==========================================
+
+if (aiQuestion) {
+
+    aiQuestion.addEventListener(
+        "keydown",
+        (event) => {
+
+            if (event.key === "Enter") {
+
+                event.preventDefault();
+
+                aiAskButton.click();
+
+            }
+
+        }
+    );
+
+}
+
+
+// ==========================================
+// QUICK QUESTION CARDS
+// ==========================================
+
+document
+    .querySelectorAll(".ask-card")
+    .forEach((card) => {
+
+        card.addEventListener(
+            "click",
+            () => {
+
+                const text =
+                    card.innerText.toLowerCase();
+
+                let question = "";
+
+
+                if (
+                    text.includes("market")
+                ) {
+
+                    question =
+                        "Explain how market trends work.";
+
+                }
+
+                else if (
+                    text.includes("portfolio")
+                ) {
+
+                    question =
+                        "How should I understand portfolio performance?";
+
+                }
+
+                else if (
+                    text.includes("news")
+                ) {
+
+                    question =
+                        "Explain how financial news can affect markets.";
+
+                }
+
+                else if (
+                    text.includes("invest")
+                ) {
+
+                    question =
+                        "Explain investing for a beginner.";
+
+                }
+
+
+                if (question) {
+
+                    aiQuestion.value =
+                        question;
+
+                    askAI(question);
+
+                }
+
+            }
+        );
+
+    });
+
+
+console.log(
+    "✓ Finny AI connected to backend"
+);

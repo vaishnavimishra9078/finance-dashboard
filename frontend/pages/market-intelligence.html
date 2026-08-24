@@ -2,55 +2,163 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Market Intelligence | Finance Dashboard</title>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>FinSight | Market Intelligence</title>
 
     <link rel="stylesheet" href="../style.css">
+
 </head>
+
 
 <body>
 
-    <header>
-        <h1>Finance Dashboard</h1>
+    <!-- ANIMATED BACKGROUND -->
+
+    <div class="background-grid"></div>
+
+    <div class="background-glow market-glow-one"></div>
+    <div class="background-glow market-glow-two"></div>
+
+
+    <!-- NAVIGATION -->
+
+    <header class="market-header">
+
+        <div class="brand">
+            <span>FIN</span>SIGHT
+        </div>
 
         <nav>
-            <a href="../index.html">Dashboard</a>
-            <a href="stock-analyzer.html">Stock Analyzer</a>
-            <a href="market-intelligence.html">Market Intelligence</a>
-            <a href="portfolio-manager.html">Portfolio Manager</a>
+
+            <a href="../index.html">
+                Dashboard
+            </a>
+
+            <a href="stock-analyzer.html">
+                Stock Analyzer
+            </a>
+
+            <a
+                href="market-intelligence.html"
+                class="active"
+            >
+                Market Intelligence
+            </a>
+
+            <a href="company-comparison.html">
+                Company Comparison
+            </a>
+
+            <a href="portfolio-manager.html">
+                Portfolio Manager
+            </a>
+
         </nav>
+
     </header>
 
-    <main>
-    <h2>Market Intelligence</h2>
 
-    <p>
-        Snapshot of major indices and top stocks.
-    </p>
+    <!-- MAIN -->
 
-    <div
-        id="marketGrid"
-        style="
-            display: flex;
-            gap: 16px;
-            margin-top: 16px;
-            flex-wrap: wrap;
-        "
-    ></div>
+    <main class="market-page">
 
-    <p
-        id="errorMsg"
-        style="
-            color: var(--danger);
-            display: none;
-        "
-    ></p>
-</main>
 
-<script src="../js/main.js"></script>
-<script src="../js/marketIntel.js"></script>
+        <!-- HERO -->
+
+        <section class="market-hero">
+
+            <span class="market-tag">
+                FINANCIAL INTELLIGENCE
+            </span>
+
+            <h1>
+                Market Intelligence
+            </h1>
+
+            <p>
+                Snapshot of major indices and top stocks.
+                Monitor the market at a glance.
+            </p>
+
+        </section>
+
+
+        <!-- MARKET CORE -->
+
+        <section class="market-intelligence-core">
+
+            <div class="market-ring ring-one"></div>
+
+            <div class="market-ring ring-two"></div>
+
+            <div class="market-ring ring-three"></div>
+
+            <div class="market-center">
+
+                <span class="market-arrow">
+                    ↗
+                </span>
+
+                <strong>
+                    MARKET
+                </strong>
+
+                <small>
+                    LIVE
+                </small>
+
+            </div>
+
+        </section>
+
+
+        <!-- SECTION TITLE -->
+
+        <section class="market-section-title">
+
+            <span>
+                MARKET OVERVIEW
+            </span>
+
+            <h2>
+                Today's Market Snapshot
+            </h2>
+
+        </section>
+
+
+        <!-- MARKET CARDS -->
+
+        <section
+            id="marketGrid"
+            class="market-grid"
+        ></section>
+
+
+        <!-- ERROR -->
+
+        <p
+            id="errorMsg"
+            class="market-error"
+        ></p>
+
+       
+
+
+
+    </main>
+
+
+    <script src="../js/main.js"></script>
+
+    <script src="../js/marketIntel.js"></script>
 
 </body>
 

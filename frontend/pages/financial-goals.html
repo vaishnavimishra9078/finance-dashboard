@@ -2,44 +2,403 @@
 <html lang="en">
 
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
     <title>Financial Goals | Finance Dashboard</title>
 
-    <link rel="stylesheet" href="../style.css">
+    <link
+        rel="stylesheet"
+        href="../style.css"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
 </head>
 
-<body>
 
-    <header>
-        <h1>Finance Dashboard</h1>
+<body class="goals-page">
 
-        <nav>
-            <a href="../index.html">Dashboard</a>
-            <a href="stock-analyzer.html">Stock Analyzer</a>
-            <a href="market-intelligence.html">Market Intelligence</a>
-            <a href="portfolio-manager.html">Portfolio Manager</a>
-        </nav>
-    </header>
 
-    <main>
-    <h2>Financial Goals</h2>
+<!-- =====================================================
+     HEADER
+===================================================== -->
 
-    <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 16px;">
-        <input type="text" id="goalName" placeholder="Goal name e.g. Emergency Fund">
-        <input type="number" id="goalTarget" placeholder="Target amount ($)">
-        <input type="number" id="goalCurrent" placeholder="Current saved ($)">
-        <input type="date" id="goalDeadline">
-        <button id="addGoalBtn">Add Goal</button>
-    </div>
+<header>
 
-    <div id="goalsList" style="display: flex; flex-direction: column; gap: 16px; max-width: 600px;"></div>
+    <h1>Finance Dashboard</h1>
 
-    <p id="errorMsg" style="color: var(--danger); display: none;"></p>
+    <nav>
+
+        <a href="../index.html">
+            Dashboard
+        </a>
+
+        <a href="stock-analyzer.html">
+            Stock Analyzer
+        </a>
+
+        <a href="market-intelligence.html">
+            Market Intelligence
+        </a>
+
+        <a href="company-comparison.html">
+            Compare
+        </a>
+
+        <a href="portfolio-manager.html">
+            Portfolio Manager
+        </a>
+
+        <a href="portfolio-settings.html">
+            Portfolio Settings
+        </a>
+
+        <a href="news-sentiment.html">
+            News & Sentiment
+        </a>
+
+        <a href="risk-analyzer.html">
+            Risk Analyzer
+        </a>
+
+        <a
+            href="financial-goals.html"
+            class="goals-active"
+        >
+            Financial Goals
+        </a>
+
+    </nav>
+
+</header>
+
+
+
+<!-- =====================================================
+     MAIN
+===================================================== -->
+
+<main class="goals-main">
+
+
+    <!-- LEFT SIDE -->
+
+    <section class="goals-intro">
+
+
+        <div class="goals-eyebrow">
+
+            <span></span>
+
+            FINANCIAL GOAL PLANNER
+
+        </div>
+
+
+        <h2>
+
+            Build your
+
+            <span>future.</span>
+
+        </h2>
+
+
+        <p class="goals-description">
+
+            Turn your financial plans into measurable
+            milestones. Set a target, track your savings
+            and watch your progress grow.
+
+        </p>
+
+
+        <!-- GOAL FORM -->
+
+        <div class="goal-form">
+
+
+            <div class="goal-field goal-name-field">
+
+                <label>
+                    GOAL
+                </label>
+
+                <input
+                    type="text"
+                    id="goalName"
+                    placeholder="Emergency Fund"
+                >
+
+            </div>
+
+
+            <div class="goal-row">
+
+
+                <div class="goal-field">
+
+                    <label>
+                        TARGET
+                    </label>
+
+                    <div class="money-input">
+
+                        <span>₹</span>
+
+                        <input
+                            type="number"
+                            id="goalTarget"
+                            placeholder="100000"
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <div class="goal-field">
+
+                    <label>
+                        CURRENT SAVINGS
+                    </label>
+
+                    <div class="money-input">
+
+                        <span>₹</span>
+
+                        <input
+                            type="number"
+                            id="goalCurrent"
+                            placeholder="25000"
+                        >
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+            <div class="goal-field">
+
+                <label>
+                    TARGET DATE
+                </label>
+
+                <input
+                    type="date"
+                    id="goalDeadline"
+                >
+
+            </div>
+
+
+            <button
+                id="addGoalBtn"
+                class="add-goal-btn"
+            >
+
+                CREATE GOAL
+
+                <span>↗</span>
+
+            </button>
+
+
+            <p
+                id="errorMsg"
+                class="goal-error"
+            ></p>
+
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- =================================================
+         3D VISUAL
+    ================================================= -->
+
+    <section class="goal-visual">
+
+
+        <div class="goal-glow"></div>
+
+
+        <div class="goal-orbit goal-orbit-one"></div>
+
+        <div class="goal-orbit goal-orbit-two"></div>
+
+        <div class="goal-orbit goal-orbit-three"></div>
+
+
+        <!-- 3D TARGET -->
+
+        <div class="goal-core">
+
+
+            <div class="core-light"></div>
+
+
+            <div class="core-circle">
+
+                <div class="core-inner">
+
+                    <span>
+                        YOUR
+                    </span>
+
+                    <strong>
+                        GOALS
+                    </strong>
+
+                    <small>
+                        YOUR FUTURE
+                    </small>
+
+                </div>
+
+            </div>
+
+
+            <div class="core-ring core-ring-one"></div>
+
+            <div class="core-ring core-ring-two"></div>
+
+
+        </div>
+
+
+        <!-- FLOATING OBJECTS -->
+
+
+        <div class="goal-floating goal-float-one">
+
+            <span>
+                TARGET
+            </span>
+
+            <strong>
+                ₹∞
+            </strong>
+
+        </div>
+
+
+        <div class="goal-floating goal-float-two">
+
+            <span>
+                PROGRESS
+            </span>
+
+            <strong>
+                +%
+            </strong>
+
+        </div>
+
+
+        <div class="goal-floating goal-float-three">
+
+            <span>
+                FUTURE
+            </span>
+
+            <strong>
+                ✦
+            </strong>
+
+        </div>
+
+
+        <div class="goal-visual-status">
+
+            <span></span>
+
+            GOAL TRACKING ACTIVE
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- =================================================
+         SAVED GOALS
+===================================================== -->
+
+    <section class="saved-goals-section">
+
+
+        <div class="saved-goals-heading">
+
+            <div>
+
+                <span>
+                    YOUR FINANCIAL PLAN
+                </span>
+
+                <h3>
+                    Active Goals
+                </h3>
+
+            </div>
+
+
+            <div class="goal-heading-symbol">
+                ◉
+            </div>
+
+        </div>
+
+
+        <!-- IMPORTANT:
+             YOUR EXISTING JS USES THIS ID
+        -->
+
+        <div
+            id="goalsList"
+            class="goals-list"
+        ></div>
+
+
+    </section>
+
+
 </main>
+
+
+
 <script src="../js/main.js"></script>
+
 <script src="../js/goals.js"></script>
+
 
 </body>
 

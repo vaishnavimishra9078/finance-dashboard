@@ -1,329 +1,576 @@
 const BACKEND_URL = "https://finance-dashboard-api-yoye.onrender.com";
 
-// Your existing Portfolio Manager uses "portfolio"
 const STORAGE_KEY = "portfolio";
 
-// Get portfolio from localStorage
 function getHoldings() {
-  const data = localStorage.getItem(STORAGE_KEY);
-  return data ? JSON.parse(data) : [];
+    const data = localStorage.getItem(STORAGE_KEY);
+    return data ? JSON.parse(data) : [];
 }
 
 
-// ===============================
+// =====================================================
 // ANALYZE RISK
-// ===============================
+// =====================================================
 
 async function analyzeRisk() {
 
-  const holdings = getHoldings();
+    const amountInput =
+        document.getElementById("riskAmount");
 
-  const errorMsg = document.getElementById("errorMsg");
-  const riskSummary = document.getElementById("riskSummary");
-  const allocationList =
-    document.getElementById("allocationList");
+    const amount =
+        parseFloat(amountInput?.value);
 
+    const errorMsg =
+        document.getElementById("errorMsg");
 
-  // Clear previous error
-  errorMsg.style.display = "none";
+    const riskInputError =
+        document.getElementById("riskInputError");
 
+    const riskSummary =
+        document.getElementById("riskSummary");
 
-  // No holdings
-  if (holdings.length === 0) {
-
-    errorMsg.textContent =
-      "No holdings found. Add some stocks in Portfolio Manager first.";
-
-    errorMsg.style.display = "block";
-
-    return;
-  }
+    const allocationList =
+        document.getElementById("allocationList");
 
 
-  // ===============================
-  // GET CURRENT VALUES
-  // ===============================
+    // Clear errors
 
-  const valuedHoldings = [];
+    errorMsg.style.display = "none";
 
-
-  for (const stock of holdings) {
-
-    let price = stock.currentPrice;
+    if (riskInputError) {
+        riskInputError.style.display = "none";
+    }
 
 
-    try {
+    // =====================================================
+    // CHECK AMOUNT
+    // =====================================================
 
-      const res = await fetch(
-        `${BACKEND_URL}/api/stocks/${stock.symbol}`
-      );
+    if (!amount || amount <= 0) {
 
-      if (res.ok) {
+        if (riskInputError) {
 
-        const data = await res.json();
+            riskInputError.textContent =
+                "Please enter a valid investment amount.";
 
-        if (data.price) {
-          price = parseFloat(data.price);
+            riskInputError.style.display =
+                "block";
+
         }
 
-      }
+        return;
+    }
 
-    } catch (err) {
 
-      // Use saved current price if API fails
-      console.log(
-        `Could not update ${stock.symbol}, using saved price.`
-      );
+    // =====================================================
+    // GET PORTFOLIO
+    // =====================================================
+
+    const holdings = getHoldings();
+
+
+    if (holdings.length === 0) {
+
+        errorMsg.textContent =
+            "No holdings found. Add stocks in Portfolio Manager first.";
+
+        errorMsg.style.display =
+            "block";
+
+        return;
+    }
+
+
+    // =====================================================
+    // GET CURRENT STOCK VALUES
+    // =====================================================
+
+    const valuedHoldings = [];
+
+
+    for (const stock of holdings) {
+
+        let price =
+            parseFloat(stock.currentPrice) || 0;
+
+
+        try {
+
+            const res = await fetch(
+                `${BACKEND_URL}/api/stocks/${stock.symbol}`
+            );
+
+
+            if (res.ok) {
+
+                const data =
+                    await res.json();
+
+
+                if (data.price) {
+
+                    price =
+                        parseFloat(data.price);
+
+                }
+
+            }
+
+        } catch (error) {
+
+            console.log(
+                `Using saved price for ${stock.symbol}`
+            );
+
+        }
+
+
+        const value =
+            Number(stock.quantity) * price;
+
+
+        valuedHoldings.push({
+
+            symbol: stock.symbol,
+
+            value: value
+
+        });
 
     }
 
 
-    const value =
-      stock.quantity * price;
+    // =====================================================
+    // TOTAL CURRENT PORTFOLIO
+    // =====================================================
 
+    const portfolioValue =
+        valuedHoldings.reduce(
+            (sum, stock) =>
+                sum + stock.value,
+            0
+        );
 
-    valuedHoldings.push({
-      symbol: stock.symbol,
-      value: value
-    });
 
-  }
+    if (portfolioValue <= 0) {
 
+        errorMsg.textContent =
+            "Portfolio value is not available.";
 
-  // ===============================
-  // TOTAL PORTFOLIO VALUE
-  // ===============================
+        errorMsg.style.display =
+            "block";
 
-  const totalValue =
-    valuedHoldings.reduce(
-      (sum, stock) => sum + stock.value,
-      0
-    );
+        return;
+    }
 
 
-  if (totalValue <= 0) {
+    // =====================================================
+    // ADD NEW INVESTMENT AMOUNT
+    // =====================================================
 
-    errorMsg.textContent =
-      "Portfolio value is not available.";
+    const projectedPortfolio =
+        portfolioValue + amount;
 
-    errorMsg.style.display = "block";
 
-    return;
-  }
+    // =====================================================
+    // HOLDING WEIGHTS
+    // =====================================================
 
+    const weights =
+        valuedHoldings.map(
+            stock =>
+                stock.value /
+                projectedPortfolio
+        );
 
-  // ===============================
-  // HOLDING WEIGHTS
-  // ===============================
 
-  const weights =
-    valuedHoldings.map(
-      stock => stock.value / totalValue
-    );
+    // The new investment is treated as
+    // additional portfolio capital.
 
+    const investmentWeight =
+        amount /
+        projectedPortfolio;
 
-  const maxWeight =
-    Math.max(...weights);
 
+    // =====================================================
+    // LARGEST EXISTING POSITION
+    // =====================================================
 
-  // ===============================
-  // DIVERSIFICATION LABEL
-  // ===============================
+    const maxExistingWeight =
+        Math.max(...weights);
 
-  let diversificationLabel;
-  let diversificationColor;
 
+    const largestWeight =
+        Math.max(
+            maxExistingWeight,
+            investmentWeight
+        );
 
-  if (maxWeight > 0.5) {
 
-    diversificationLabel =
-      "Poor — heavily concentrated";
+    // =====================================================
+    // DIVERSIFICATION SCORE
+    // =====================================================
 
-    diversificationColor =
-      "var(--danger)";
+    const hhi =
+        weights.reduce(
+            (sum, weight) =>
+                sum + weight * weight,
+            0
+        );
 
-  } else if (maxWeight > 0.3) {
 
-    diversificationLabel =
-      "Moderate";
+    const diversificationScore =
+        Math.round(
+            Math.max(
+                0,
+                Math.min(
+                    100,
+                    (1 - hhi) * 100
+                )
+            )
+        );
 
-    diversificationColor =
-      "#eab308";
 
-  } else {
+    // =====================================================
+    // RISK SCORE
+    // =====================================================
 
-    diversificationLabel =
-      "Good — well spread out";
+    let riskScore =
+        100 - diversificationScore;
 
-    diversificationColor =
-      "var(--accent)";
 
-  }
+    // Larger new investment = more concentration
 
+    if (investmentWeight > 0.5) {
 
-  // ===============================
-  // HHI SCORE
-  // ===============================
+        riskScore += 20;
 
-  const hhi =
-    weights.reduce(
-      (sum, weight) => sum + weight * weight,
-      0
-    );
+    } else if (investmentWeight > 0.3) {
 
+        riskScore += 10;
 
-  const diversificationScore =
-    Math.round((1 - hhi) * 100);
+    }
 
 
-  // ===============================
-  // SUMMARY CARDS
-  // ===============================
+    riskScore =
+        Math.round(
+            Math.max(
+                0,
+                Math.min(100, riskScore)
+            )
+        );
 
-  riskSummary.innerHTML = `
 
-    <div class="card" style="min-width:200px;">
+    // =====================================================
+    // RISK LABEL
+    // =====================================================
 
-      <h4>Diversification Score</h4>
+    let riskLabel;
+    let riskColor;
 
-      <p
-        style="
-          font-size:24px;
-          font-weight:bold;
-          color:${diversificationColor};
-        "
-      >
-        ${diversificationScore}/100
-      </p>
 
-      <p style="color:#888; font-size:13px;">
-        ${diversificationLabel}
-      </p>
+    if (riskScore < 35) {
 
-    </div>
+        riskLabel =
+            "Low Risk";
 
+        riskColor =
+            "#69e0a2";
 
-    <div class="card" style="min-width:200px;">
+    } else if (riskScore < 65) {
 
-      <h4>Number of Holdings</h4>
+        riskLabel =
+            "Moderate Risk";
 
-      <p
-        style="
-          font-size:24px;
-          font-weight:bold;
-        "
-      >
-        ${holdings.length}
-      </p>
+        riskColor =
+            "#eab308";
 
-      <p style="color:#888; font-size:13px;">
-        ${
-          holdings.length < 5
-            ? "Consider adding more positions"
-            : "Reasonable spread"
-        }
-      </p>
+    } else {
 
-    </div>
+        riskLabel =
+            "Higher Risk";
 
+        riskColor =
+            "#ff7187";
 
-    <div class="card" style="min-width:200px;">
+    }
 
-      <h4>Largest Position</h4>
 
-      <p
-        style="
-          font-size:24px;
-          font-weight:bold;
-        "
-      >
-        ${(maxWeight * 100).toFixed(1)}%
-      </p>
+    // =====================================================
+    // DIVERSIFICATION LABEL
+    // =====================================================
 
-      <p style="color:#888; font-size:13px;">
-        of total portfolio
-      </p>
+    let diversificationLabel;
 
-    </div>
 
-  `;
+    if (diversificationScore >= 70) {
 
+        diversificationLabel =
+            "Good — well diversified";
 
-  // ===============================
-  // ALLOCATION BREAKDOWN
-  // ===============================
+    } else if (diversificationScore >= 40) {
 
-  allocationList.innerHTML = "";
+        diversificationLabel =
+            "Moderate diversification";
 
+    } else {
 
-  valuedHoldings
-    .sort((a, b) => b.value - a.value)
-    .forEach(stock => {
+        diversificationLabel =
+            "Poor — highly concentrated";
 
-      const percentage =
-        (stock.value / totalValue) * 100;
+    }
 
 
-      const row =
-        document.createElement("div");
+    // =====================================================
+    // UPDATE SUMMARY
+    // =====================================================
 
+    riskSummary.innerHTML = `
 
-      row.style.marginBottom = "10px";
+        <div class="card">
 
+            <h4>Portfolio Risk</h4>
 
-      row.innerHTML = `
+            <p
+                style="
+                    font-size:28px;
+                    font-weight:bold;
+                    color:${riskColor};
+                "
+            >
+                ${riskScore}/100
+            </p>
 
-        <div
-          style="
-            display:flex;
-            justify-content:space-between;
-            font-size:14px;
-          "
-        >
-
-          <span>
-            ${stock.symbol}
-          </span>
-
-          <span>
-            ${percentage.toFixed(1)}%
-          </span>
+            <p style="color:#888;font-size:13px;">
+                ${riskLabel}
+            </p>
 
         </div>
 
 
-        <div
-          style="
-            background:#2a2e3f;
-            border-radius:4px;
-            height:8px;
-            margin-top:4px;
-          "
-        >
+        <div class="card">
 
-          <div
-            style="
-              background:var(--accent);
-              width:${percentage}%;
-              height:100%;
-              border-radius:4px;
-            "
-          ></div>
+            <h4>Diversification</h4>
+
+            <p
+                style="
+                    font-size:28px;
+                    font-weight:bold;
+                    color:${riskColor};
+                "
+            >
+                ${diversificationScore}/100
+            </p>
+
+            <p style="color:#888;font-size:13px;">
+                ${diversificationLabel}
+            </p>
 
         </div>
 
-      `;
+
+        <div class="card">
+
+            <h4>Investment Amount</h4>
+
+            <p
+                style="
+                    font-size:28px;
+                    font-weight:bold;
+                "
+            >
+                ₹${amount.toLocaleString("en-IN")}
+            </p>
+
+            <p style="color:#888;font-size:13px;">
+                New investment analyzed
+            </p>
+
+        </div>
+
+    `;
 
 
-      allocationList.appendChild(row);
+    // =====================================================
+    // ALLOCATION
+    // =====================================================
 
-    });
+    allocationList.innerHTML = "";
+
+
+    valuedHoldings
+        .sort(
+            (a, b) =>
+                b.value - a.value
+        )
+        .forEach(stock => {
+
+            const percentage =
+                (
+                    stock.value /
+                    projectedPortfolio
+                ) * 100;
+
+
+            const row =
+                document.createElement("div");
+
+
+            row.style.marginBottom =
+                "14px";
+
+
+            row.innerHTML = `
+
+                <div
+                    style="
+                        display:flex;
+                        justify-content:space-between;
+                        font-size:14px;
+                        margin-bottom:5px;
+                    "
+                >
+
+                    <span>
+                        ${stock.symbol}
+                    </span>
+
+                    <span>
+                        ${percentage.toFixed(1)}%
+                    </span>
+
+                </div>
+
+
+                <div
+                    style="
+                        background:#25283a;
+                        border-radius:10px;
+                        height:7px;
+                        overflow:hidden;
+                    "
+                >
+
+                    <div
+                        style="
+                            background:
+                            linear-gradient(
+                                90deg,
+                                #7166ed,
+                                #a779ff
+                            );
+
+                            width:${percentage}%;
+
+                            height:100%;
+
+                            border-radius:10px;
+
+                            transition:width .8s ease;
+                        "
+                    ></div>
+
+                </div>
+
+            `;
+
+
+            allocationList.appendChild(row);
+
+        });
+
+
+    // =====================================================
+    // UPDATE 3D FLOATING VALUES
+    // =====================================================
+
+    const visualDiversification =
+        document.getElementById(
+            "visualDiversification"
+        );
+
+
+    const visualHoldings =
+        document.getElementById(
+            "visualHoldings"
+        );
+
+
+    const visualLargest =
+        document.getElementById(
+            "visualLargest"
+        );
+
+
+    if (visualDiversification) {
+
+        visualDiversification.textContent =
+            diversificationScore + "%";
+
+    }
+
+
+    if (visualHoldings) {
+
+        visualHoldings.textContent =
+            holdings.length;
+
+    }
+
+
+    if (visualLargest) {
+
+        visualLargest.textContent =
+            largestWeight.toFixed(1) + "%";
+
+    }
 
 }
 
 
-// ===============================
-// START ANALYSIS
-// ===============================
+// =====================================================
+// BUTTON
+// =====================================================
 
-analyzeRisk();
+const riskButton =
+    document.getElementById(
+        "riskAnalyzeButton"
+    );
+
+
+if (riskButton) {
+
+    riskButton.addEventListener(
+        "click",
+        analyzeRisk
+    );
+
+}
+
+
+// =====================================================
+// ENTER KEY
+// =====================================================
+
+const riskAmount =
+    document.getElementById(
+        "riskAmount"
+    );
+
+
+if (riskAmount) {
+
+    riskAmount.addEventListener(
+        "keydown",
+        event => {
+
+            if (event.key === "Enter") {
+
+                analyzeRisk();
+
+            }
+
+        }
+    );
+
+}

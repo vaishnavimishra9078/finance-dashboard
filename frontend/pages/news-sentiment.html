@@ -5,14 +5,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>News Sentiment | Finance Dashboard</title>
+    <title>News Intelligence | Finance Dashboard</title>
 
     <link rel="stylesheet" href="../style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
 </head>
 
-<body>
+<body class="news-page">
 
-   
+    <!-- ================= NAVIGATION ================= -->
 
     <header>
 
@@ -20,13 +28,9 @@
 
         <nav>
 
-            <a href="../index.html">
-                Dashboard
-            </a>
+            <a href="../index.html">Dashboard</a>
 
-            <a href="stock-analyzer.html">
-                Stock Analyzer
-            </a>
+            <a href="stock-analyzer.html">Stock Analyzer</a>
 
             <a href="market-intelligence.html">
                 Market Intelligence
@@ -44,7 +48,7 @@
                 Portfolio Settings
             </a>
 
-            <a href="news-sentiment.html">
+            <a href="news-sentiment.html" class="active">
                 News & Sentiment
             </a>
 
@@ -52,32 +56,189 @@
 
     </header>
 
-<main>
-  <h2>News & Sentiment</h2>
 
-  <input
-    type="text"
-    id="newsQuery"
-    placeholder="Search news e.g. AAPL, stock market"
-  >
+    <!-- ================= MAIN ================= -->
 
-  <button id="newsSearchBtn">Search</button>
+    <main class="news-stage">
 
-  <div
-    id="newsResults"
-    style="margin-top: 16px; display: flex; flex-direction: column; gap: 10px; max-width: 700px;"
-  ></div>
+        <!-- LEFT SIDE -->
 
-  <p
-    id="errorMsg"
-    style="color: var(--danger); display: none;"
-  ></p>
-</main>
+        <section class="news-copy">
+
+            <div class="news-label">
+                <span></span>
+                LIVE MARKET INTELLIGENCE
+            </div>
+
+            <h2>
+                What's
+                <em>moving</em>
+                the market?
+            </h2>
+
+            <p>
+                Explore financial headlines, market narratives
+                and sentiment signals shaping today's market.
+            </p>
+
+
+            <!-- SEARCH -->
+
+            <div class="news-command">
+
+                <input
+                    type="text"
+                    id="newsQuery"
+                    placeholder="Search AAPL, Tesla, technology..."
+                >
+
+                <button id="newsSearchBtn">
+                    SEARCH
+                    <span>↗</span>
+                </button>
+
+            </div>
+
+
+            <div class="news-suggestions">
+
+                <span>QUICK SEARCH</span>
+
+                <button class="news-chip">
+                    AAPL
+                </button>
+
+                <button class="news-chip">
+                    TESLA
+                </button>
+
+                <button class="news-chip">
+                    NVIDIA
+                </button>
+
+                <button class="news-chip">
+                    MARKET
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= 3D OBJECT ================= -->
+
+        <section class="news-visual">
+
+            <div class="visual-glow"></div>
+
+            <div class="news-orbit orbit-one"></div>
+
+            <div class="news-orbit orbit-two"></div>
+
+            <div class="news-orbit orbit-three"></div>
+
+
+            <!-- MAIN 3D GLOBE -->
+
+            <div class="news-globe">
+
+                <div class="globe-grid"></div>
+
+                <div class="globe-light"></div>
+
+                <div class="globe-core"></div>
+
+            </div>
+
+
+            <!-- FLOATING DATA -->
+
+            <div class="float-data data-one">
+                <strong>+18.4%</strong>
+                <span>MARKET</span>
+            </div>
+
+            <div class="float-data data-two">
+                <strong>64%</strong>
+                <span>POSITIVE</span>
+            </div>
+
+            <div class="float-data data-three">
+                <strong>LIVE</strong>
+                <span>NEWS FEED</span>
+            </div>
+
+
+            <!-- NEWS SIGNAL -->
+
+            <div class="news-signal">
+
+                <span class="signal-dot"></span>
+
+                <div>
+                    <strong>MARKET SIGNAL</strong>
+                    <small>REAL-TIME ANALYSIS</small>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= NEWS ================= -->
+
+        <section class="news-feed">
+
+            <div class="feed-heading">
+
+                <span>LATEST SIGNALS</span>
+
+                <div></div>
+
+            </div>
+
+
+            <div
+                id="newsResults"
+                class="news-results"
+            ></div>
+
+
+            <p
+                id="errorMsg"
+                class="news-error"
+            ></p>
+
+        </section>
+
+    </main>
+
 
     <script src="../js/main.js"></script>
-<script src="../js/newsSentiment.js"></script>
+
+    <script src="../js/newsSentiment.js"></script>
 
 
+    <script>
+
+        document
+            .querySelectorAll(".news-chip")
+            .forEach(chip => {
+
+                chip.addEventListener("click", () => {
+
+                    document.getElementById("newsQuery").value =
+                        chip.textContent.trim();
+
+                    document
+                        .getElementById("newsSearchBtn")
+                        .click();
+
+                });
+
+            });
+
+    </script>
 
 </body>
 

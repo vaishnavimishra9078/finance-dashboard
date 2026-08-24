@@ -10,12 +10,15 @@
         content="width=device-width, initial-scale=1.0"
     >
 
-    <title>FinSight | Finance Intelligence Dashboard</title>
-
-    <link
-        rel="stylesheet"
-        href="style.css"
+    <meta
+        name="description"
+        content="FinSight - AI Powered Finance Intelligence Dashboard"
     >
+
+    <title>FinSight | Finance Intelligence</title>
+
+    <!-- MAIN CSS -->
+    <link rel="stylesheet" href="style.css">
 
 </head>
 
@@ -23,7 +26,9 @@
 <body class="home-page">
 
 
-    <!-- BACKGROUND EFFECTS -->
+    <!-- =====================================================
+         BACKGROUND
+    ====================================================== -->
 
     <div class="background-grid"></div>
 
@@ -31,47 +36,67 @@
 
     <div class="background-glow glow-two"></div>
 
+    <div class="background-glow glow-three"></div>
 
-    <!-- HEADER -->
+
+    <!-- PARTICLES -->
+
+    <div class="particles">
+
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+
+    </div>
+
+
+    <!-- =====================================================
+         HEADER
+    ====================================================== -->
 
     <header class="main-header">
 
-        <div class="brand">
+        <a href="index.html" class="brand">
 
             <div class="brand-logo">
-                F
-            </div>
 
-            <div>
-
-                <h1>
-                    FinSight
-                </h1>
-
-                <span>
-                    Finance Intelligence
-                </span>
+                <span>F</span>
 
             </div>
 
-        </div>
+
+            <div class="brand-text">
+
+                <h1>FinSight</h1>
+
+                <span>Finance Intelligence</span>
+
+            </div>
+
+        </a>
 
 
-        <nav>
+        <nav class="main-nav">
 
-            <a
-                href="index.html"
-                class="active"
-            >
+            <a href="index.html" class="active">
                 Dashboard
             </a>
 
             <a href="pages/stock-analyzer.html">
-                Stock Analyzer
+                Stocks
             </a>
 
             <a href="pages/market-intelligence.html">
-                Market Intelligence
+                Market
             </a>
 
             <a href="pages/company-comparison.html">
@@ -94,8 +119,8 @@
                 Goals
             </a>
 
-            <a href="pages/financial-calculator.html">
-                Calculators
+            <a href="pages/financial-calculators.html">
+                Calculator
             </a>
 
             <a href="pages/investment-simulator.html">
@@ -115,59 +140,778 @@
     </header>
 
 
-    <!-- MAIN -->
+    <!-- =====================================================
+         MAIN
+    ====================================================== -->
 
-     <main>
-  <h2>Dashboard</h2>
+    <main>
 
-  <div id="dashboardGrid" style="display:flex; gap:16px; flex-wrap:wrap; margin-top:16px;">
 
-    <div class="card" style="min-width:220px;">
-      <h4>Portfolio Value</h4>
-      <p id="dashPortfolioValue" style="font-size:22px; font-weight:bold;">$0.00</p>
-      <p id="dashPortfolioPL" style="font-size:13px;"></p>
+        <!-- =================================================
+             HERO SECTION
+        ================================================== -->
+
+        <section class="hero-section">
+
+
+            <!-- LEFT -->
+
+            <div class="hero-content">
+
+
+                <div class="hero-badge">
+
+                    <span class="status-pulse"></span>
+
+                    AI-POWERED FINANCIAL INTELLIGENCE
+
+                </div>
+
+
+                <h2>
+
+                    The Future of
+
+                    <span>Finance</span>
+
+                    Starts Here.
+
+                </h2>
+
+
+                <p class="hero-description">
+
+                    Analyze markets, understand investments,
+                    monitor your portfolio and discover
+                    intelligent financial insights — all
+                    from one futuristic platform.
+
+                </p>
+
+
+                <div class="hero-buttons">
+
+                    <a
+                        href="pages/stock-analyzer.html"
+                        class="primary-button"
+                    >
+
+                        Explore Markets
+
+                        <span>→</span>
+
+                    </a>
+
+
+                    <a
+                        href="pages/portfolio-manager.html"
+                        class="secondary-button"
+                    >
+
+                        View Portfolio
+
+                    </a>
+
+                </div>
+
+
+                <div class="system-status">
+
+                    <span class="system-dot"></span>
+
+                    <span>
+                        Financial intelligence systems online
+                    </span>
+
+                </div>
+
+
+                <!-- MINI STATS -->
+
+                <div class="hero-stats">
+
+                    <div>
+
+                        <strong>24/7</strong>
+
+                        <span>Intelligence</span>
+
+                    </div>
+
+
+                    <div>
+
+                        <strong>AI</strong>
+
+                        <span>Analysis</span>
+
+                    </div>
+
+
+                    <div>
+
+                        <strong>LIVE</strong>
+
+                        <span>Markets</span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 3D FINANCIAL CORE
+            ================================================== -->
+
+            <div class="hero-visual">
+
+
+                <!-- BIG AURA -->
+
+                <div class="core-aura"></div>
+
+
+                <!-- ORBIT 1 -->
+
+                <div class="orbit orbit-one">
+
+                    <div class="orbit-dot"></div>
+
+                </div>
+
+
+                <!-- ORBIT 2 -->
+
+                <div class="orbit orbit-two">
+
+                    <div class="orbit-dot"></div>
+
+                </div>
+
+
+                <!-- ORBIT 3 -->
+
+                <div class="orbit orbit-three">
+
+                    <div class="orbit-dot"></div>
+
+                </div>
+
+
+                <!-- 3D CORE -->
+
+                <div class="hologram-core">
+
+
+                    <!-- CUBE -->
+
+                    <div class="cube">
+
+                        <div class="cube-face front">
+
+                            <span>AI</span>
+
+                        </div>
+
+
+                        <div class="cube-face back">
+
+                            <span>₹</span>
+
+                        </div>
+
+
+                        <div class="cube-face right">
+
+                            <span>DATA</span>
+
+                        </div>
+
+
+                        <div class="cube-face left">
+
+                            <span>FS</span>
+
+                        </div>
+
+
+                        <div class="cube-face top">
+
+                            <span>∞</span>
+
+                        </div>
+
+
+                        <div class="cube-face bottom">
+
+                            <span>LIVE</span>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- STOCK BARS -->
+
+                    <div class="stock-bars">
+
+                        <span style="height:35%"></span>
+
+                        <span style="height:50%"></span>
+
+                        <span style="height:42%"></span>
+
+                        <span style="height:68%"></span>
+
+                        <span style="height:55%"></span>
+
+                        <span style="height:82%"></span>
+
+                        <span style="height:70%"></span>
+
+                        <span style="height:94%"></span>
+
+                    </div>
+
+
+                    <!-- CENTER SYMBOL -->
+
+                    <div class="core-symbol">
+
+                        ₹
+
+                    </div>
+
+
+                    <!-- ENERGY WAVE -->
+
+                    <div class="energy-wave wave-one"></div>
+
+                    <div class="energy-wave wave-two"></div>
+
+
+                </div>
+
+
+                <!-- FLOATING DATA CARD -->
+
+                <div class="floating-data-card market-data">
+
+                    <div class="data-icon">
+                        ↗
+                    </div>
+
+                    <div>
+
+                        <small>MARKET</small>
+
+                        <strong>+8.42%</strong>
+
+                    </div>
+
+                </div>
+
+
+                <!-- FLOATING DATA CARD -->
+
+                <div class="floating-data-card portfolio-data">
+
+                    <div class="data-icon">
+                        ₹
+                    </div>
+
+                    <div>
+
+                        <small>PORTFOLIO</small>
+
+                        <strong>₹24,580</strong>
+
+                    </div>
+
+                </div>
+
+
+                <!-- FLOATING DATA CARD -->
+
+                <div class="floating-data-card ai-data">
+
+                    <div class="data-icon">
+                        AI
+                    </div>
+
+                    <div>
+
+                        <small>AI SIGNAL</small>
+
+                        <strong>BULLISH</strong>
+
+                    </div>
+
+                </div>
+
+
+                <!-- PARTICLES AROUND OBJECT -->
+
+                <div class="visual-particle p1"></div>
+
+                <div class="visual-particle p2"></div>
+
+                <div class="visual-particle p3"></div>
+
+                <div class="visual-particle p4"></div>
+
+                <div class="visual-particle p5"></div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             DASHBOARD CARDS
+        ================================================== -->
+
+        <section class="dashboard-section">
+
+
+            <div class="section-heading">
+
+                <div>
+
+                    <span class="section-label">
+                        LIVE INTELLIGENCE
+                    </span>
+
+                    <h2>
+                        Your Financial Overview
+                    </h2>
+
+                </div>
+
+
+                <div class="live-indicator">
+
+                    <span></span>
+
+                    LIVE
+
+                </div>
+
+            </div>
+
+
+            <div class="dashboard-grid">
+
+
+                <!-- PORTFOLIO -->
+
+                <div class="dashboard-card">
+
+                    <div class="card-top">
+
+                        <div class="card-icon purple">
+                            ₹
+                        </div>
+
+                        <span class="card-tag">
+                            PORTFOLIO
+                        </span>
+
+                    </div>
+
+
+                    <p>
+                        Portfolio Value
+                    </p>
+
+
+                    <h3 id="dashPortfolioValue">
+                        ₹0.00
+                    </h3>
+
+
+                    <div
+                        id="dashPortfolioPL"
+                        class="card-change"
+                    >
+                        Loading...
+                    </div>
+
+
+                    <div class="card-line"></div>
+
+                </div>
+
+
+                <!-- GOALS -->
+
+                <div class="dashboard-card">
+
+                    <div class="card-top">
+
+                        <div class="card-icon cyan">
+                            🎯
+                        </div>
+
+                        <span class="card-tag">
+                            GOALS
+                        </span>
+
+                    </div>
+
+
+                    <p>
+                        Active Goals
+                    </p>
+
+
+                    <h3 id="dashGoalsCount">
+                        0
+                    </h3>
+
+
+                    <div class="card-subtext">
+                        tracked financial goals
+                    </div>
+
+
+                    <div class="card-line"></div>
+
+                </div>
+
+
+                <!-- DIVERSIFICATION -->
+
+                <div class="dashboard-card">
+
+                    <div class="card-top">
+
+                        <div class="card-icon blue">
+                            ◈
+                        </div>
+
+                        <span class="card-tag">
+                            RISK
+                        </span>
+
+                    </div>
+
+
+                    <p>
+                        Diversification
+                    </p>
+
+
+                    <h3 id="dashDiversification">
+                        —
+                    </h3>
+
+
+                    <div class="card-subtext">
+                        portfolio score
+                    </div>
+
+
+                    <div class="card-line"></div>
+
+                </div>
+
+
+                <!-- AI -->
+
+                <div class="dashboard-card ai-dashboard-card">
+
+                    <div class="card-top">
+
+                        <div class="card-icon pink">
+                            ✦
+                        </div>
+
+                        <span class="card-tag">
+                            AI ENGINE
+                        </span>
+
+                    </div>
+
+
+                    <p>
+                        Intelligence
+                    </p>
+
+
+                    <h3>
+                        ACTIVE
+                    </h3>
+
+
+                    <div class="card-subtext">
+                        intelligent analysis online
+                    </div>
+
+
+                    <div class="ai-scan-line"></div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             FEATURE SECTION
+        ================================================== -->
+
+        <section class="features-section">
+
+
+            <div class="section-heading">
+
+                <div>
+
+                    <span class="section-label">
+                        INTELLIGENT TOOLS
+                    </span>
+
+                    <h2>
+                        Explore FinSight
+                    </h2>
+
+                </div>
+
+            </div>
+
+
+            <div class="feature-grid">
+
+
+                <a
+                    href="pages/stock-analyzer.html"
+                    class="feature-card"
+                >
+
+                    <div class="feature-number">
+                        01
+                    </div>
+
+                    <div class="feature-icon">
+                        📊
+                    </div>
+
+                    <h3>
+                        Stock Intelligence
+                    </h3>
+
+                    <p>
+                        Analyze stocks and discover
+                        meaningful market signals.
+                    </p>
+
+                    <span class="feature-arrow">
+                        →
+                    </span>
+
+                </a>
+
+
+                <a
+                    href="pages/market-intelligence.html"
+                    class="feature-card"
+                >
+
+                    <div class="feature-number">
+                        02
+                    </div>
+
+                    <div class="feature-icon">
+                        ◉
+                    </div>
+
+                    <h3>
+                        Market Intelligence
+                    </h3>
+
+                    <p>
+                        Explore market movements,
+                        trends and financial data.
+                    </p>
+
+                    <span class="feature-arrow">
+                        →
+                    </span>
+
+                </a>
+
+
+                <a
+                    href="pages/company-comparison.html"
+                    class="feature-card"
+                >
+
+                    <div class="feature-number">
+                        03
+                    </div>
+
+                    <div class="feature-icon">
+                        ⇄
+                    </div>
+
+                    <h3>
+                        Company Comparison
+                    </h3>
+
+                    <p>
+                        Compare companies using
+                        important financial metrics.
+                    </p>
+
+                    <span class="feature-arrow">
+                        →
+                    </span>
+
+                </a>
+
+
+                <a
+                    href="pages/portfolio-manager.html"
+                    class="feature-card"
+                >
+
+                    <div class="feature-number">
+                        04
+                    </div>
+
+                    <div class="feature-icon">
+                        ◈
+                    </div>
+
+                    <h3>
+                        Portfolio Manager
+                    </h3>
+
+                    <p>
+                        Track investments and understand
+                        your portfolio performance.
+                    </p>
+
+                    <span class="feature-arrow">
+                        →
+                    </span>
+
+                </a>
+
+
+                <a
+                    href="pages/risk-analyzer.html"
+                    class="feature-card"
+                >
+
+                    <div class="feature-number">
+                        05
+                    </div>
+
+                    <div class="feature-icon">
+                        🛡
+                    </div>
+
+                    <h3>
+                        Risk Intelligence
+                    </h3>
+
+                    <p>
+                        Understand risk exposure and
+                        portfolio diversification.
+                    </p>
+
+                    <span class="feature-arrow">
+                        →
+                    </span>
+
+                </a>
+
+
+                <a
+                    href="pages/news-sentiment.html"
+                    class="feature-card"
+                >
+
+                    <div class="feature-number">
+                        06
+                    </div>
+
+                    <div class="feature-icon">
+                        ◎
+                    </div>
+
+                    <h3>
+                        News Sentiment
+                    </h3>
+
+                    <p>
+                        Discover financial news and
+                        market sentiment.
+                    </p>
+
+                    <span class="feature-arrow">
+                        →
+                    </span>
+
+                </a>
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+
+    <!-- =====================================================
+         FOOTER
+    ====================================================== -->
+
+    <footer class="site-footer">
+
+        <div class="footer-line"></div>
+
+        <p>
+            FinSight © 2026 · Finance Intelligence Platform
+        </p>
+
+        <span>
+            Powered by intelligent technology
+        </span>
+
+    </footer>
+
+
+    <!-- =====================================================
+         JAVASCRIPT
+    ====================================================== -->
+
+    <!-- Your main.js is directly inside frontend -->
+    <script src="main.js"></script>
+
+    <!-- Dashboard JS if present inside frontend/js -->
+    <script src="js/dashboard.js"></script>
+    <!-- AI ASSISTANT FLOATING BUTTON -->
+
+<a href="pages/ai-assistant.html" class="dashboard-ai-button">
+
+    <div class="dashboard-ai-icon">
+        ✦
     </div>
 
-    <div class="card" style="min-width:220px;">
-      <h4>Active Goals</h4>
-      <p id="dashGoalsCount" style="font-size:22px; font-weight:bold;">0</p>
-      <p style="font-size:13px; color:#888;">tracked goals</p>
+    <div class="dashboard-ai-text">
+        <span>AI</span>
+        <small>Assistant</small>
     </div>
 
-    <div class="card" style="min-width:220px;">
-      <h4>Diversification</h4>
-      <p id="dashDiversification" style="font-size:22px; font-weight:bold;">—</p>
-      <p style="font-size:13px; color:#888;">portfolio score</p>
-    </div>
+</a>
 
-  </div>
-
-  <h3 style="margin-top:24px;">Quick Links</h3>
-
-  <div style="display:flex; gap:8px; flex-wrap:wrap;">
-    <a href="pages/portfolio-manager.html"
-       class="card"
-       style="text-decoration:none; color:var(--text); padding:12px 16px;">
-       Manage Portfolio →
-    </a>
-
-    <a href="pages/stock-analyzer.html"
-       class="card"
-       style="text-decoration:none; color:var(--text); padding:12px 16px;">
-       Analyze a Stock →
-    </a>
-
-    <a href="pages/news-sentiment.html"
-       class="card"
-       style="text-decoration:none; color:var(--text); padding:12px 16px;">
-       Check News →
-    </a>
-  </div>
-</main>
-<script src="js/main.js"></script>
-<script src="js/dashboard.js"></script>
 
 </body>
-</html>
-</body>
+
 </html>

@@ -2,65 +2,402 @@
 <html lang="en">
 
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
     <title>Risk Analyzer | Finance Dashboard</title>
 
-    <link rel="stylesheet" href="../style.css">
+    <link
+        rel="stylesheet"
+        href="../style.css"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;500;600;700&family=Syne:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
 </head>
 
-<body>
 
-    <header>
-        <h1>Finance Dashboard</h1>
+<body class="risk-page">
 
-        <nav>
-            <a href="../index.html">Dashboard</a>
-            <a href="stock-analyzer.html">Stock Analyzer</a>
-            <a href="market-intelligence.html">Market Intelligence</a>
-            <a href="portfolio-manager.html">Portfolio Manager</a>
-        </nav>
-    </header>
 
-   <main>
+<!-- =====================================================
+     HEADER
+===================================================== -->
 
-    <h2>Risk Analyzer</h2>
+<header>
 
-    <p style="color:#888;">
-        Based on your current portfolio holdings.
-    </p>
+    <h1>Finance Dashboard</h1>
 
-    <div
-        id="riskSummary"
-        style="
-            display:flex;
-            gap:16px;
-            flex-wrap:wrap;
-            margin:16px 0;
-        "
-    ></div>
+    <nav>
 
-    <h3>Allocation Breakdown</h3>
+        <a href="../index.html">
+            Dashboard
+        </a>
 
-    <div
-        id="allocationList"
-        style="max-width:500px;"
-    ></div>
+        <a href="stock-analyzer.html">
+            Stock Analyzer
+        </a>
 
-    <p
-        id="errorMsg"
-        style="
-            color:var(--danger);
-            display:none;
-        "
-    ></p>
+        <a href="market-intelligence.html">
+            Market Intelligence
+        </a>
+
+        <a href="company-comparison.html">
+            Compare
+        </a>
+
+        <a href="portfolio-manager.html">
+            Portfolio Manager
+        </a>
+
+        <a href="portfolio-settings.html">
+            Portfolio Settings
+        </a>
+
+        <a href="news-sentiment.html">
+            News & Sentiment
+        </a>
+
+        <a
+            href="risk-analyzer.html"
+            class="risk-active"
+        >
+            Risk Analyzer
+        </a>
+
+    </nav>
+
+</header>
+
+
+
+<!-- =====================================================
+     MAIN RISK EXPERIENCE
+===================================================== -->
+
+<main class="risk-main">
+
+
+    <!-- LEFT CONTENT -->
+
+    <section class="risk-intro">
+
+
+        <div class="risk-eyebrow">
+
+            <span class="risk-dot"></span>
+
+            PORTFOLIO RISK ENGINE
+
+        </div>
+
+
+        <h2>
+
+            Understand your
+
+            <span>risk.</span>
+
+        </h2>
+
+
+        <p class="risk-description">
+
+            Analyze your portfolio concentration,
+            diversification and exposure with a
+            visual risk intelligence system.
+
+        </p>
+        <div class="risk-input-box">
+
+    <div class="risk-input-label">
+        <span>₹</span>
+
+        <input
+            type="number"
+            id="riskAmount"
+            placeholder="Enter investment amount"
+        >
+    </div>
+
+    <button
+        type="button"
+        id="riskAnalyzeButton"
+    >
+        ANALYZE RISK
+        <span>↗</span>
+    </button>
+
+</div>
+
+<p
+    id="riskInputError"
+    class="risk-input-error"
+></p>
+
+
+        <div class="risk-note">
+
+            <span>✦</span>
+
+            Analysis is calculated from your
+            current Portfolio Manager holdings.
+
+        </div>
+
+
+        <!-- STATUS -->
+
+        <div class="risk-system">
+
+            <div class="system-light"></div>
+
+            <div>
+
+                <strong>
+                    RISK ENGINE
+                </strong>
+
+                <small>
+                    ANALYSIS READY
+                </small>
+
+            </div>
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- =================================================
+         3D VISUAL
+    ================================================= -->
+
+    <section class="risk-visual">
+
+
+        <div class="risk-glow"></div>
+
+
+        <!-- ORBIT -->
+
+        <div class="risk-orbit orbit-1"></div>
+
+        <div class="risk-orbit orbit-2"></div>
+
+        <div class="risk-orbit orbit-3"></div>
+
+
+        <!-- MAIN 3D CORE -->
+
+        <div class="risk-sphere">
+
+
+            <div class="sphere-shine"></div>
+
+
+            <div class="sphere-content">
+
+                <span>
+                    PORTFOLIO
+                </span>
+
+                <strong>
+                    RISK
+                </strong>
+
+                <small>
+                    ANALYSIS
+                </small>
+
+            </div>
+
+
+            <div class="sphere-ring ring-1"></div>
+
+            <div class="sphere-ring ring-2"></div>
+
+            <div class="sphere-ring ring-3"></div>
+
+
+        </div>
+
+
+
+        <!-- FLOATING DATA -->
+
+        <div class="floating-card float-one">
+
+            <span>
+                DIVERSIFICATION
+            </span>
+
+            <strong id="visualDiversification">
+                --
+            </strong>
+
+        </div>
+
+
+        <div class="floating-card float-two">
+
+            <span>
+                HOLDINGS
+            </span>
+
+            <strong id="visualHoldings">
+                --
+            </strong>
+
+        </div>
+
+
+        <div class="floating-card float-three">
+
+            <span>
+                LARGEST POSITION
+            </span>
+
+            <strong id="visualLargest">
+                --
+            </strong>
+
+        </div>
+
+
+        <!-- CENTER STATUS -->
+
+        <div class="visual-status">
+
+            <span></span>
+
+            LIVE PORTFOLIO ANALYSIS
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- =================================================
+         REAL RESULTS FROM YOUR EXISTING JS
+    ================================================= -->
+
+    <section class="risk-results">
+
+
+        <div class="results-title">
+
+            <span>
+                RISK INTELLIGENCE
+            </span>
+
+            <div></div>
+
+        </div>
+
+
+        <!-- IMPORTANT:
+             KEEP THIS ID
+             YOUR JS USES IT
+        -->
+
+        <div
+            id="riskSummary"
+            class="risk-summary"
+        ></div>
+
+
+
+        <!-- ALLOCATION -->
+
+        <div class="allocation-section">
+
+
+            <div class="allocation-header">
+
+                <div>
+
+                    <span>
+                        PORTFOLIO ALLOCATION
+                    </span>
+
+                    <h3>
+                        Where your money is concentrated
+                    </h3>
+
+                </div>
+
+                <div class="allocation-symbol">
+                    ◌
+                </div>
+
+            </div>
+
+
+            <!-- IMPORTANT:
+                 KEEP THIS ID
+                 YOUR JS USES IT
+            -->
+
+            <div
+                id="allocationList"
+                class="allocation-list"
+            ></div>
+
+
+        </div>
+
+
+        <!-- IMPORTANT:
+             KEEP THIS ID
+             YOUR JS USES IT
+        -->
+
+        <p
+            id="errorMsg"
+            class="risk-error"
+        ></p>
+
+
+    </section>
+
 
 </main>
+
+
+
+<!-- =====================================================
+     EXISTING JAVASCRIPT
+===================================================== -->
+
 <script src="../js/main.js"></script>
+
 <script src="../js/riskAnalyzer.js"></script>
+
 
 </body>
 
 </html>
-

@@ -70,6 +70,22 @@ for (const ticker of WATCHLIST) {
 }
 
         grid.innerHTML = "";
+        if (results.length === 0) {
+    grid.innerHTML = `
+        <div class="card market-empty">
+            <h3>Market Data Unavailable</h3>
+            <p>Unable to fetch today's market snapshot.</p>
+        </div>
+    `;
+    
+    if (errorMsg) {
+        errorMsg.textContent =
+            "Market data could not be loaded from the backend.";
+        errorMsg.style.display = "block";
+    }
+
+    return;
+}
 
 
         results.forEach((data) => {

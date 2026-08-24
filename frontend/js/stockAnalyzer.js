@@ -11,8 +11,18 @@ document.getElementById('searchBtn').addEventListener('click', async () => {
 
   try {
     const res = await fetch(`${BACKEND_URL}/api/stocks/${ticker}`);
-    if (!res.ok) throw new Error('Not found');
-    const data = await res.json();
+
+console.log("Response status:", res.status);
+
+if (!res.ok) {
+    const errorText = await res.text();
+    console.log("Backend response:", errorText);
+    throw new Error("Backend error");
+}
+
+const data = await res.json();
+
+console.log("Stock data:", data);
 
     document.getElementById('symbol').textContent = data.symbol;
     document.getElementById('price').textContent = data.price;

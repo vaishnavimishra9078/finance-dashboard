@@ -1,6 +1,8 @@
 const BACKEND_URL = "https://finance-dashboard-api-yoye.onrender.com";
 
-document.getElementById("simRunBtn").addEventListener("click", async () => {
+const simButton = document.getElementById("simRunBtn");
+
+simButton.addEventListener("click", async () => {
 
     const ticker = document
         .getElementById("simTicker")
@@ -12,8 +14,9 @@ document.getElementById("simRunBtn").addEventListener("click", async () => {
         document.getElementById("simAmount").value
     );
 
-    const date =
-        document.getElementById("simDate").value;
+    const date = document
+        .getElementById("simDate")
+        .value;
 
     const resultDiv =
         document.getElementById("simResult");
@@ -21,85 +24,262 @@ document.getElementById("simRunBtn").addEventListener("click", async () => {
     const errorMsg =
         document.getElementById("errorMsg");
 
+
+    // Clear previous result
     resultDiv.style.display = "none";
+    resultDiv.innerHTML = "";
+
     errorMsg.style.display = "none";
+    errorMsg.textContent = "";
 
-    if (!ticker || !amount || !date) {
-        errorMsg.textContent =
-            "Fill in ticker, amount, and date.";
 
+    // Validate inputs
+    if (!ticker) {
+        errorMsg.textContent = "Please enter a stock ticker.";
         errorMsg.style.display = "block";
         return;
     }
 
+    if (!amount || amount <= 0) {
+        errorMsg.textContent = "Please enter a valid investment amount.";
+        errorMsg.style.display = "block";
+        return;
+    }
+
+    if (!date) {
+        errorMsg.textContent = "Please select an investment date.";
+        errorMsg.style.display = "block";
+        return;
+    }
+
+
+    // Button loading state
+    simButton.disabled = true;
+    simButton.textContent = "Calculating...";
+
+
     try {
 
-        const res = await fetch(
-            `${BACKEND_URL}/api/stocks/${ticker}/history/${date}`
-        );
+        console.log("Simulator request:");
+        console.log("Ticker:", ticker);
+        console.log("Amount:", amount);
+        console.log("Date:", date);
 
-        if (!res.ok) {
-            throw new Error("Simulation failed");
+
+        const url =
+            `${BACKEND_URL}/api/stocks/${ticker}/history/${date}`;
+
+        console.log("Request URL:", url);
+
+
+        const response = await fetch(url);
+
+
+        if (!response.ok) {
+
+            const errorText = await response.text();
+
+            console.error(
+                "Backend error:",
+                response.status,
+                errorText
+            );
+
+            throw new Error(
+                `Backend returned ${response.status}`
+            );
         }
 
-        const data = await res.json();
+
+        const data = await response.json();
+
+        console.log("Simulator data:", data);
+
+
+        if (
+            !data.priceOnDate ||
+            !data.latestPrice
+        ) {
+            throw new Error(
+                "Invalid data returned by backend."
+            );
+        }
+
+
+        // ===============================
+        // CALCULATIONS
+        // ===============================
+
+        const priceOnDate =
+            Number(data.priceOnDate);
+
+        const latestPrice =
+            Number(data.latestPrice);
+
 
         const sharesBought =
-            amount / data.priceOnDate;
+            amount / priceOnDate;
+
 
         const currentValue =
-            sharesBought * data.latestPrice;
+            sharesBought * latestPrice;
+
 
         const gain =
             currentValue - amount;
 
-        const gainPercent =
-            ((gain / amount) * 100).toFixed(2);
 
-        const isPositive =
+        const gainPercent =
+            (gain / amount) * 100;
+
+
+        const positive =
             gain >= 0;
 
+
+        // ===============================
+        // DISPLAY RESULT
+        // ===============================
+
         resultDiv.innerHTML = `
-            <h3>${data.ticker}</h3>
 
-            <p>
-                Price on ${data.dateRequested}:
-                $${data.priceOnDate.toFixed(2)}
-            </p>
+            <div class="simulator-result-grid">
 
-            <p>
-                Shares bought:
-                ${sharesBought.toFixed(4)}
-            </p>
+                <div class="simulator-result-card">
 
-            <p>
-                Current price (${data.latestDate}):
-                $${data.latestPrice.toFixed(2)}
-            </p>
+                    <small>
+                        Investment
+                    </small>
 
-            <hr>
+                    <strong>
+                        $${amount.toFixed(2)}
+                    </strong>
 
-            <p style="font-size:20px; font-weight:bold;">
-                Current Value:
-                $${currentValue.toFixed(2)}
-            </p>
+                </div>
 
-            <p style="color:${isPositive ? "var(--accent)" : "var(--danger)"};">
-                ${isPositive ? "+" : ""}
-                $${gain.toFixed(2)}
-                (${gainPercent}%)
-            </p>
+
+                <div class="simulator-result-card">
+
+                    <small>
+                        Shares Bought
+                    </small>
+
+                    <strong>
+                        ${sharesBought.toFixed(4)}
+                    </strong>
+
+                </div>
+
+
+                <div class="simulator-result-card">
+
+                    <small>
+                        Price Then
+                    </small>
+
+                    <strong>
+                        $${priceOnDate.toFixed(2)}
+                    </strong>
+
+                </div>
+
+
+                <div class="simulator-result-card">
+
+                    <small>
+                        Current Value
+                    </small>
+
+                    <strong>
+                        $${currentValue.toFixed(2)}
+                    </strong>
+
+                </div>
+
+
+                <div class="simulator-result-card">
+
+                    <small>
+                        Return
+                    </small>
+
+                    <strong class="${
+                        positive
+                            ? "simulator-profit"
+                            : "simulator-loss"
+                    }">
+
+                        ${positive ? "+" : "-"}$${Math.abs(gain).toFixed(2)}
+
+                    </strong>
+
+                </div>
+
+
+                <div class="simulator-result-card">
+
+                    <small>
+                        Percentage Return
+                    </small>
+
+                    <strong class="${
+                        positive
+                            ? "simulator-profit"
+                            : "simulator-loss"
+                    }">
+
+                        ${positive ? "+" : ""}
+                        ${gainPercent.toFixed(2)}%
+
+                    </strong>
+
+                </div>
+
+            </div>
+
+            <div style="
+                margin-top:18px;
+                text-align:center;
+                color:#777;
+                font-size:13px;
+            ">
+
+                ${data.ticker} ·
+                Investment date: ${data.dateRequested}
+
+            </div>
         `;
+
 
         resultDiv.style.display = "block";
 
-    } catch (err) {
 
-        console.error("Simulator error:", err);
+        // Scroll smoothly to result
+        resultDiv.scrollIntoView({
+            behavior: "smooth",
+            block: "center"
+        });
+
+
+    } catch (error) {
+
+        console.error(
+            "Investment Simulator Error:",
+            error
+        );
+
 
         errorMsg.textContent =
-            "Could not simulate — check ticker and date, or try a different date.";
+            "Could not simulate this investment. Check the ticker and date, then try again.";
 
         errorMsg.style.display = "block";
+
+
+    } finally {
+
+        simButton.disabled = false;
+        simButton.textContent = "Run Simulation →";
+
     }
+
 });

@@ -2,164 +2,717 @@
 <html lang="en">
 
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
     <title>Financial Calculators | Finance Dashboard</title>
 
-    <link rel="stylesheet" href="../style.css">
+    <link
+        rel="stylesheet"
+        href="../style.css"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
 </head>
 
-<body>
 
-    <header>
-        <h1>Finance Dashboard</h1>
-
-        <nav>
-            <a href="../index.html">Dashboard</a>
-            <a href="stock-analyzer.html">Stock Analyzer</a>
-            <a href="market-intelligence.html">Market Intelligence</a>
-            <a href="portfolio-manager.html">Portfolio Manager</a>
-        </nav>
-    </header>
-
-    <main>
-        <h2>Financial Calculators</h2>
-
-<div style="display:flex; gap:8px; margin-bottom:20px; flex-wrap:wrap;">
-  <button class="calcTab" data-target="compoundCalc">
-    Compound Interest
-  </button>
-
-  <button class="calcTab" data-target="loanCalc">
-    Loan / Mortgage
-  </button>
-
-  <button class="calcTab" data-target="retirementCalc">
-    Retirement
-  </button>
-</div>
-
-<!-- Compound Interest -->
-<div id="compoundCalc" class="calcSection card" style="max-width:400px;">
-  <h3>Compound Interest</h3>
-
-  <input
-    type="number"
-    id="ciPrincipal"
-    placeholder="Initial amount ($)"
-  >
-
-  <input
-    type="number"
-    id="ciRate"
-    placeholder="Annual interest rate (%)"
-  >
-
-  <input
-    type="number"
-    id="ciYears"
-    placeholder="Years"
-  >
-
-  <input
-    type="number"
-    id="ciContribution"
-    placeholder="Monthly contribution ($)"
-  >
-
-  <button id="ciCalcBtn">Calculate</button>
-
-  <p
-    id="ciResult"
-    style="margin-top:10px; font-weight:bold;"
-  ></p>
-</div>
+<body class="calculator-page">
 
 
-<!-- Loan / Mortgage -->
-<div
-  id="loanCalc"
-  class="calcSection card"
-  style="max-width:400px; display:none;"
->
-  <h3>Loan / Mortgage Payment</h3>
+<header>
 
-  <input
-    type="number"
-    id="loanAmount"
-    placeholder="Loan amount ($)"
-  >
+    <h1>Finance Dashboard</h1>
 
-  <input
-    type="number"
-    id="loanRate"
-    placeholder="Annual interest rate (%)"
-  >
+    <nav>
 
-  <input
-    type="number"
-    id="loanYears"
-    placeholder="Loan term (years)"
-  >
+        <a href="../index.html">Dashboard</a>
 
-  <button id="loanCalcBtn">Calculate</button>
+        <a href="stock-analyzer.html">Stock Analyzer</a>
 
-  <p
-    id="loanResult"
-    style="margin-top:10px; font-weight:bold;"
-  ></p>
-</div>
+        <a href="market-intelligence.html">
+            Market Intelligence
+        </a>
+
+        <a href="company-comparison.html">
+            Compare
+        </a>
+
+        <a href="portfolio-manager.html">
+            Portfolio Manager
+        </a>
+
+        <a href="portfolio-settings.html">
+            Portfolio Settings
+        </a>
+
+        <a href="news-sentiment.html">
+            News & Sentiment
+        </a>
+
+        <a href="risk-analyzer.html">
+            Risk Analyzer
+        </a>
+
+        <a href="financial-goals.html">
+            Financial Goals
+        </a>
+
+        <a
+            href="financial-calculator.html"
+            class="calculator-active"
+        >
+            Calculator
+        </a>
+
+    </nav>
+
+</header>
 
 
-<!-- Retirement -->
-<div
-  id="retirementCalc"
-  class="calcSection card"
-  style="max-width:400px; display:none;"
->
-  <h3>Retirement Savings</h3>
 
-  <input
-    type="number"
-    id="retCurrentAge"
-    placeholder="Current age"
-  >
+<main class="calculator-main">
 
-  <input
-    type="number"
-    id="retTargetAge"
-    placeholder="Retirement age"
-  >
 
-  <input
-    type="number"
-    id="retCurrentSavings"
-    placeholder="Current savings ($)"
-  >
+    <!-- =================================================
+         HERO
+    ================================================== -->
 
-  <input
-    type="number"
-    id="retMonthly"
-    placeholder="Monthly contribution ($)"
-  >
+    <section class="calculator-hero">
 
-  <input
-    type="number"
-    id="retRate"
-    placeholder="Expected annual return (%)"
-  >
+        <div class="calculator-intro">
 
-  <button id="retCalcBtn">Calculate</button>
+            <div class="calculator-eyebrow">
 
-  <p
-    id="retResult"
-    style="margin-top:10px; font-weight:bold;"
-  ></p>
-</div>
-    </main>
-    <script src="../js/main.js"></script>
+                <span></span>
+
+                FINANCIAL INTELLIGENCE TOOL
+
+            </div>
+
+
+            <h2>
+
+                Calculate
+
+                <span>what's next.</span>
+
+            </h2>
+
+
+            <p>
+
+                Explore how your money could grow,
+                understand loan costs and estimate
+                your future savings.
+
+            </p>
+
+        </div>
+
+
+        <!-- 3D CALCULATOR -->
+
+        <div class="calculator-visual">
+
+            <div class="calc-glow"></div>
+
+            <div class="calc-orbit calc-orbit-one"></div>
+
+            <div class="calc-orbit calc-orbit-two"></div>
+
+
+            <div class="calc-device">
+
+                <div class="device-screen">
+
+                    <small>
+                        FINANCE AI
+                    </small>
+
+                    <strong>
+                        ₹
+                    </strong>
+
+                    <span>
+                        PLAN • GROW • BUILD
+                    </span>
+
+                </div>
+
+
+                <div class="device-buttons">
+
+                    <i></i>
+                    <i></i>
+                    <i></i>
+                    <i></i>
+
+                    <i></i>
+                    <i></i>
+                    <i></i>
+                    <i></i>
+
+                    <i></i>
+                    <i></i>
+                    <i></i>
+                    <i></i>
+
+                </div>
+
+            </div>
+
+
+            <div class="calc-floating calc-float-one">
+
+                <span>
+                    GROWTH
+                </span>
+
+                <strong>
+                    +12.4%
+                </strong>
+
+            </div>
+
+
+            <div class="calc-floating calc-float-two">
+
+                <span>
+                    FUTURE VALUE
+                </span>
+
+                <strong>
+                    ₹∞
+                </strong>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =================================================
+         CALCULATOR AREA
+    ================================================== -->
+
+    <section class="calculator-workspace">
+
+
+        <!-- TABS -->
+
+        <div class="calc-tabs">
+
+            <button
+                class="calcTab active"
+                data-target="compoundCalc"
+            >
+
+                <span>01</span>
+
+                Compound Interest
+
+            </button>
+
+
+            <button
+                class="calcTab"
+                data-target="loanCalc"
+            >
+
+                <span>02</span>
+
+                Loan / Mortgage
+
+            </button>
+
+
+            <button
+                class="calcTab"
+                data-target="retirementCalc"
+            >
+
+                <span>03</span>
+
+                Retirement
+
+            </button>
+
+        </div>
+
+
+
+        <!-- =================================================
+             COMPOUND INTEREST
+        ================================================== -->
+
+        <div
+            id="compoundCalc"
+            class="calcSection calculator-panel"
+        >
+
+            <div class="panel-heading">
+
+                <div>
+
+                    <span>
+                        CALCULATOR 01
+                    </span>
+
+                    <h3>
+                        Compound Interest
+                    </h3>
+
+                    <p>
+                        See how your money can grow
+                        over time.
+                    </p>
+
+                </div>
+
+                <div class="panel-number">
+                    01
+                </div>
+
+            </div>
+
+
+            <div class="calculator-form">
+
+
+                <div class="calc-input">
+
+                    <label>
+                        INITIAL AMOUNT
+                    </label>
+
+                    <div>
+
+                        <span>₹</span>
+
+                        <input
+                            type="number"
+                            id="ciPrincipal"
+                            placeholder="10000"
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <div class="calc-input">
+
+                    <label>
+                        ANNUAL INTEREST RATE
+                    </label>
+
+                    <div>
+
+                        <span>%</span>
+
+                        <input
+                            type="number"
+                            id="ciRate"
+                            placeholder="8"
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <div class="calc-input">
+
+                    <label>
+                        INVESTMENT PERIOD
+                    </label>
+
+                    <div>
+
+                        <span>Y</span>
+
+                        <input
+                            type="number"
+                            id="ciYears"
+                            placeholder="10"
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <div class="calc-input">
+
+                    <label>
+                        MONTHLY CONTRIBUTION
+                    </label>
+
+                    <div>
+
+                        <span>₹</span>
+
+                        <input
+                            type="number"
+                            id="ciContribution"
+                            placeholder="2000"
+                        >
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+            <button
+                id="ciCalcBtn"
+                class="calculate-button"
+            >
+
+                CALCULATE GROWTH
+
+                <span>↗</span>
+
+            </button>
+
+
+            <div
+                id="ciResult"
+                class="calculator-result"
+            ></div>
+
+        </div>
+
+
+
+        <!-- =================================================
+             LOAN
+        ================================================== -->
+
+        <div
+            id="loanCalc"
+            class="calcSection calculator-panel"
+            style="display:none;"
+        >
+
+            <div class="panel-heading">
+
+                <div>
+
+                    <span>
+                        CALCULATOR 02
+                    </span>
+
+                    <h3>
+                        Loan / Mortgage
+                    </h3>
+
+                    <p>
+                        Understand your monthly
+                        payment and total cost.
+                    </p>
+
+                </div>
+
+                <div class="panel-number">
+                    02
+                </div>
+
+            </div>
+
+
+            <div class="calculator-form">
+
+
+                <div class="calc-input">
+
+                    <label>
+                        LOAN AMOUNT
+                    </label>
+
+                    <div>
+
+                        <span>₹</span>
+
+                        <input
+                            type="number"
+                            id="loanAmount"
+                            placeholder="500000"
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <div class="calc-input">
+
+                    <label>
+                        ANNUAL INTEREST RATE
+                    </label>
+
+                    <div>
+
+                        <span>%</span>
+
+                        <input
+                            type="number"
+                            id="loanRate"
+                            placeholder="7.5"
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <div class="calc-input">
+
+                    <label>
+                        LOAN TERM
+                    </label>
+
+                    <div>
+
+                        <span>Y</span>
+
+                        <input
+                            type="number"
+                            id="loanYears"
+                            placeholder="5"
+                        >
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+            <button
+                id="loanCalcBtn"
+                class="calculate-button"
+            >
+
+                CALCULATE PAYMENT
+
+                <span>↗</span>
+
+            </button>
+
+
+            <div
+                id="loanResult"
+                class="calculator-result"
+            ></div>
+
+        </div>
+
+
+
+        <!-- =================================================
+             RETIREMENT
+        ================================================== -->
+
+        <div
+            id="retirementCalc"
+            class="calcSection calculator-panel"
+            style="display:none;"
+        >
+
+            <div class="panel-heading">
+
+                <div>
+
+                    <span>
+                        CALCULATOR 03
+                    </span>
+
+                    <h3>
+                        Retirement
+                    </h3>
+
+                    <p>
+                        Project your savings for
+                        the future.
+                    </p>
+
+                </div>
+
+                <div class="panel-number">
+                    03
+                </div>
+
+            </div>
+
+
+            <div class="calculator-form">
+
+
+                <div class="calc-input">
+
+                    <label>
+                        CURRENT AGE
+                    </label>
+
+                    <div>
+
+                        <span>Y</span>
+
+                        <input
+                            type="number"
+                            id="retCurrentAge"
+                            placeholder="25"
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <div class="calc-input">
+
+                    <label>
+                        RETIREMENT AGE
+                    </label>
+
+                    <div>
+
+                        <span>Y</span>
+
+                        <input
+                            type="number"
+                            id="retTargetAge"
+                            placeholder="60"
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <div class="calc-input">
+
+                    <label>
+                        CURRENT SAVINGS
+                    </label>
+
+                    <div>
+
+                        <span>₹</span>
+
+                        <input
+                            type="number"
+                            id="retCurrentSavings"
+                            placeholder="50000"
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <div class="calc-input">
+
+                    <label>
+                        MONTHLY CONTRIBUTION
+                    </label>
+
+                    <div>
+
+                        <span>₹</span>
+
+                        <input
+                            type="number"
+                            id="retMonthly"
+                            placeholder="5000"
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <div class="calc-input">
+
+                    <label>
+                        EXPECTED ANNUAL RETURN
+                    </label>
+
+                    <div>
+
+                        <span>%</span>
+
+                        <input
+                            type="number"
+                            id="retRate"
+                            placeholder="8"
+                        >
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+            <button
+                id="retCalcBtn"
+                class="calculate-button"
+            >
+
+                PROJECT RETIREMENT
+
+                <span>↗</span>
+
+            </button>
+
+
+            <div
+                id="retResult"
+                class="calculator-result"
+            ></div>
+
+        </div>
+
+
+    </section>
+
+
+</main>
+
+
+
+<script src="../js/main.js"></script>
+
 <script src="../js/financial-calculator.js"></script>
+
 
 </body>
 

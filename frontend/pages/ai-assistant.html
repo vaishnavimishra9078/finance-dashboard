@@ -5,70 +5,451 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>AI Assistant | Finance Dashboard</title>
+    <title>AI Assistant | Finance Intelligence</title>
 
     <link rel="stylesheet" href="../style.css">
 </head>
 
-<body>
+<body class="ai-page">
 
-    <header>
-        <h1>Finance Dashboard</h1>
+    <!-- =========================================
+         BACKGROUND
+    ========================================== -->
+
+    <div class="ai-background">
+
+        <div class="ai-grid"></div>
+
+        <div class="ai-glow ai-glow-1"></div>
+        <div class="ai-glow ai-glow-2"></div>
+        <div class="ai-glow ai-glow-3"></div>
+
+        <span class="particle particle-1"></span>
+        <span class="particle particle-2"></span>
+        <span class="particle particle-3"></span>
+        <span class="particle particle-4"></span>
+        <span class="particle particle-5"></span>
+        <span class="particle particle-6"></span>
+
+    </div>
+
+
+    <!-- =========================================
+         EXISTING NAVIGATION
+    ========================================== -->
+
+    <header class="navbar">
+
+        <div class="logo">
+            <span>FIN</span>ANCE AI
+        </div>
 
         <nav>
-            <a href="../index.html">Dashboard</a>
-            <a href="stock-analyzer.html">Stock Analyzer</a>
-            <a href="market-intelligence.html">Market Intelligence</a>
-            <a href="portfolio-manager.html">Portfolio Manager</a>
+
+            <a href="../index.html">
+                Dashboard
+            </a>
+
+            <a href="stock-analyzer.html">
+                Stock Analyzer
+            </a>
+
+            <a href="market-intelligence.html">
+                Market Intelligence
+            </a>
+
+            <a href="company-comparison.html">
+                Company Comparison
+            </a>
+
+            <a href="portfolio-manager.html">
+                Portfolio Manager
+            </a>
+
+            <a href="ai-assistant.html" class="active">
+                AI Assistant
+            </a>
+
         </nav>
+
     </header>
 
-    <main>
-    <h2>AI Financial Assistant</h2>
 
-    <p style="color:#888;">
-        Ask questions about investing, finance, and your portfolio.
-    </p>
+    <!-- =========================================
+         MAIN AI AREA
+    ========================================== -->
 
-    <div style="max-width:700px; margin-top:20px;">
+    <main class="ai-main">
 
-        <div id="chatBox"
-             class="card"
-             style="height:400px; overflow-y:auto; margin-bottom:12px;">
 
-            <div style="margin-bottom:12px;">
-                <strong>AI Assistant:</strong>
-                <p style="margin:4px 0;">
-                    Hello! I'm your financial assistant.
-                    Ask me a question to get started.
-                </p>
+        <!-- =====================================
+             TOP TEXT
+        ====================================== -->
+
+        <section class="ai-heading">
+
+            <div class="ai-pill">
+                <span class="live-dot"></span>
+                AI FINANCIAL INTELLIGENCE
+            </div>
+
+            <h1>
+                Meet your
+                <span>Finance AI</span>
+            </h1>
+
+            <p>
+                Ask questions. Explore markets. Understand your
+                investments with intelligent financial insights.
+            </p>
+
+        </section>
+
+
+        <!-- =====================================
+             LEFT MARKET CARD
+        ====================================== -->
+
+        <div class="floating-card market-card">
+
+            <div class="floating-card-top">
+
+                <div class="card-symbol">
+                    ↗
+                </div>
+
+                <div>
+                    <small>MARKET</small>
+                    <strong>Market Pulse</strong>
+                </div>
+
+            </div>
+
+            <div class="market-number">
+                +4.82%
+            </div>
+
+            <div class="mini-line-chart">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+            <p>
+                Markets looking positive
+            </p>
+
+        </div>
+
+
+        <!-- =====================================
+             RIGHT PORTFOLIO CARD
+        ====================================== -->
+
+        <div class="floating-card portfolio-card">
+
+            <div class="floating-card-top">
+
+                <div class="card-symbol purple">
+                    ◈
+                </div>
+
+                <div>
+                    <small>PORTFOLIO</small>
+                    <strong>Performance</strong>
+                </div>
+
+            </div>
+
+            <div class="portfolio-value">
+                ₹24,680
+            </div>
+
+            <div class="portfolio-profit">
+                +12.6%
+            </div>
+
+            <div class="portfolio-bars">
+
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+
             </div>
 
         </div>
 
-        <div style="display:flex; gap:8px;">
 
-            <input
-                type="text"
-                id="userMessage"
-                placeholder="Ask a finance question..."
-                style="flex:1;"
-            >
+        <!-- =====================================
+             NEWS CARD
+        ====================================== -->
 
-            <button id="sendBtn">
-                Send
-            </button>
+        <div class="floating-card news-card">
+
+            <div class="floating-card-top">
+
+                <div class="card-symbol blue">
+                    ◉
+                </div>
+
+                <div>
+                    <small>NEWS</small>
+                    <strong>Market Update</strong>
+                </div>
+
+            </div>
+
+            <p class="news-title">
+                Technology stocks gain momentum as investors remain optimistic.
+            </p>
+
+            <span class="news-time">
+                2 min ago
+            </span>
 
         </div>
 
-        <p id="aiError"
-           style="color:var(--danger); display:none;">
-        </p>
 
-    </div>
-</main>
-<script src="../js/main.js"></script>
-<script src="../js/aiAssistant.js"></script>
+        <!-- =====================================
+             AI ROBOT
+        ====================================== -->
+
+        <section class="ai-robot-area">
+
+            <!-- Large glowing circle -->
+
+            <div class="robot-aura"></div>
+
+            <div class="robot-ring robot-ring-1"></div>
+            <div class="robot-ring robot-ring-2"></div>
+            <div class="robot-ring robot-ring-3"></div>
+
+
+            <!-- ROBOT -->
+
+            <div class="ai-robot">
+
+                <!-- Head -->
+
+                <div class="robot-head">
+
+                    <div class="robot-ear left-ear"></div>
+                    <div class="robot-ear right-ear"></div>
+
+                    <div class="robot-face">
+
+                        <div class="robot-eyes">
+
+                            <span class="robot-eye"></span>
+                            <span class="robot-eye"></span>
+
+                        </div>
+
+                        <div class="robot-mouth"></div>
+
+                        <div class="face-glow"></div>
+
+                    </div>
+
+                    <div class="robot-antenna">
+
+                        <span></span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Neck -->
+
+                <div class="robot-neck"></div>
+
+
+                <!-- Body -->
+
+                <div class="robot-body">
+
+                    <div class="robot-chest">
+
+                        <div class="chest-logo">
+                            ✦
+                        </div>
+
+                        <div class="chest-line"></div>
+                        <div class="chest-line short"></div>
+
+                    </div>
+
+                    <div class="robot-shoulder left"></div>
+                    <div class="robot-shoulder right"></div>
+
+                </div>
+
+
+                <!-- Arms -->
+
+                <div class="robot-arm robot-arm-left">
+                    <div class="robot-hand"></div>
+                </div>
+
+                <div class="robot-arm robot-arm-right">
+                    <div class="robot-hand"></div>
+                </div>
+
+
+                <!-- Holographic microphone -->
+
+                <div class="microphone">
+
+                    <div class="mic-orbit orbit-a"></div>
+                    <div class="mic-orbit orbit-b"></div>
+
+                    <div class="mic-head">
+
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+
+                    </div>
+
+                    <div class="mic-stick"></div>
+
+                    <div class="mic-base"></div>
+
+                </div>
+
+            </div>
+
+
+            <!-- AI STATUS -->
+
+            <div class="robot-status">
+
+                <span class="status-light"></span>
+
+                <div>
+                    <strong>Finny AI</strong>
+                    <small>Ready to assist</small>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================
+             ASK AREA
+        ====================================== -->
+
+        <section class="ask-area">
+
+            <div class="ask-title">
+
+                <span>✦</span>
+
+                TRY ASKING ME ABOUT
+
+            </div>
+
+
+            <div class="ask-cards">
+
+                <button class="ask-card"
+                    onclick="askAI('What is the market trend today?')">
+
+                    <span class="ask-icon">📈</span>
+
+                    <div>
+                        <strong>Market Trends</strong>
+                        <small>What's happening in the market?</small>
+                    </div>
+
+                </button>
+
+
+                <button class="ask-card"
+                    onclick="askAI('How is my portfolio performing?')">
+
+                    <span class="ask-icon">💼</span>
+
+                    <div>
+                        <strong>Portfolio</strong>
+                        <small>Analyze my investments</small>
+                    </div>
+
+                </button>
+
+
+                <button class="ask-card"
+                    onclick="askAI('What financial news should I know?')">
+
+                    <span class="ask-icon">📰</span>
+
+                    <div>
+                        <strong>Latest News</strong>
+                        <small>Give me important updates</small>
+                    </div>
+
+                </button>
+
+
+                <button class="ask-card"
+                    onclick="askAI('Explain stock investing to me')">
+
+                    <span class="ask-icon">💡</span>
+
+                    <div>
+                        <strong>Investing</strong>
+                        <small>Help me understand investing</small>
+                    </div>
+
+                </button>
+
+            </div>
+
+
+            <!-- SEARCH / ASK -->
+
+            <div class="ai-input-box">
+
+                <div class="input-sparkle">
+                    ✦
+                </div>
+
+                <input
+                    type="text"
+                    id="aiQuestion"
+                    placeholder="Ask your finance question..."
+                >
+
+                <button id="aiAskButton">
+
+                    <span>Ask AI</span>
+                    <b>→</b>
+
+                </button>
+
+            </div>
+
+            <p class="ai-note">
+                AI-generated insights are for educational purposes only.
+            </p>
+
+        </section>
+
+
+    </main>
+
+
+    <script src="../js/aiAssistant.js"></script>
 
 </body>
 

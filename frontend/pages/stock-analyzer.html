@@ -1,33 +1,369 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Stock Analyzer</title>
-  <link rel="stylesheet" href="../style.css">
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>FinSight | Stock Analyzer</title>
+
+    <link rel="stylesheet" href="../style.css">
+
 </head>
+
 
 <body>
 
-  <main>
-    <h2>Stock Analyzer</h2>
+    <!-- BACKGROUND -->
+    <div class="background-grid"></div>
 
-    <input type="text" id="tickerInput" placeholder="Enter ticker e.g. AAPL">
-    <button id="searchBtn">Search</button>
+    <div class="background-glow glow-one"></div>
+    <div class="background-glow glow-two"></div>
 
-    <div id="result" class="card" style="margin-top: 16px; display: none;">
-      <h3 id="symbol"></h3>
-      <p>Price: $<span id="price"></span></p>
-      <p id="change"></p>
-    </div>
 
-    <p id="errorMsg" style="color: var(--danger); display: none;"></p>
-    <p id="errorMsg" style="color: var(--danger); display: none;"></p>
+    <main class="stock-page">
 
-  </main>
 
-  <script src="../js/stockAnalyzer.js"></script>
-<script src="../main.js"></script>
+        <!-- HEADER -->
+
+        <section class="stock-hero">
+
+            <span class="section-tag">
+                FINANCIAL INTELLIGENCE
+            </span>
+
+            <h2>
+                Stock Analyzer
+            </h2>
+
+            <p>
+                Explore market data, price movements
+                and stock performance in real time.
+            </p>
+
+        </section>
+
+
+
+        <!-- 3D MARKET CORE -->
+
+        <section class="market-core">
+
+            <div class="orbit orbit-1"></div>
+
+            <div class="orbit orbit-2"></div>
+
+            <div class="orbit orbit-3"></div>
+
+            <div class="core-glow"></div>
+
+            <div class="core-object">
+
+                <div class="core-arrow">
+                    ↗
+                </div>
+
+                <span>
+                    MARKET
+                </span>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- CENTER SEARCH -->
+
+        <section class="stock-search-area">
+
+            <div class="search-title">
+
+                <span>
+                    SEARCH MARKET
+                </span>
+
+                <h3>
+                    Analyze Any Stock
+                </h3>
+
+            </div>
+
+
+            <div class="stock-search-box">
+
+                <div class="search-icon">
+                    ⌕
+                </div>
+
+                <input
+                    type="text"
+                    id="tickerInput"
+                    placeholder="Enter stock ticker  •  AAPL"
+                    autocomplete="off"
+                >
+
+                <button id="searchBtn">
+
+                    <span>
+                        ANALYZE
+                    </span>
+
+                    <span class="button-arrow">
+                        ↗
+                    </span>
+
+                </button>
+
+            </div>
+
+
+            <div class="search-hint">
+
+                <span>Popular:</span>
+
+                <button
+                    type="button"
+                    onclick="document.getElementById('tickerInput').value='AAPL'"
+                >
+                    AAPL
+                </button>
+
+                <button
+                    type="button"
+                    onclick="document.getElementById('tickerInput').value='MSFT'"
+                >
+                    MSFT
+                </button>
+
+                <button
+                    type="button"
+                    onclick="document.getElementById('tickerInput').value='GOOGL'"
+                >
+                    GOOGL
+                </button>
+
+                <button
+                    type="button"
+                    onclick="document.getElementById('tickerInput').value='AMZN'"
+                >
+                    AMZN
+                </button>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- RESULT REPORT -->
+
+        <section
+            id="result"
+            class="stock-report"
+            style="display: none;"
+        >
+
+            <!-- REPORT HEADER -->
+
+            <div class="report-header">
+
+                <div class="company-identity">
+
+                    <div class="company-symbol">
+                        <span id="symbol"></span>
+                    </div>
+
+                    <div>
+
+                        <span class="report-label">
+                            STOCK REPORT
+                        </span>
+
+                        <h3 id="reportTitle">
+                            Market Analysis
+                        </h3>
+
+                    </div>
+
+                </div>
+
+
+                <div class="live-indicator">
+
+                    <span></span>
+
+                    LIVE DATA
+
+                </div>
+
+            </div>
+
+
+
+            <!-- MAIN PRICE -->
+
+            <div class="main-price">
+
+                <span>
+                    CURRENT MARKET PRICE
+                </span>
+
+                <div>
+                    $<strong id="price"></strong>
+                </div>
+
+            </div>
+
+
+
+            <!-- REPORT VISUAL -->
+
+            <div class="report-visual">
+
+                <div class="chart-grid">
+
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+
+                </div>
+
+
+                <svg
+                    class="fake-chart"
+                    viewBox="0 0 700 180"
+                    preserveAspectRatio="none"
+                >
+
+                    <defs>
+
+                        <linearGradient
+                            id="chartGradient"
+                            x1="0"
+                            x2="1"
+                        >
+
+                            <stop
+                                offset="0%"
+                                stop-color="#8b5cf6"
+                            >
+
+                            <stop
+                                offset="100%"
+                                stop-color="#22d3ee"
+                            >
+
+                        </linearGradient>
+
+                    </defs>
+
+
+                    <path
+                        d="M0 145
+                           C70 130 80 145 130 115
+                           C180 85 210 130 250 100
+                           C300 65 330 110 380 80
+                           C430 50 460 95 500 60
+                           C550 25 580 70 620 45
+                           C650 25 680 40 700 15"
+                        fill="none"
+                        stroke="url(#chartGradient)"
+                        stroke-width="5"
+                        stroke-linecap="round"
+                    />
+
+                </svg>
+
+            </div>
+
+
+
+            <!-- REPORT DATA -->
+
+            <div class="report-data">
+
+                <div class="data-card">
+
+                    <span>
+                        PRICE
+                    </span>
+
+                    <strong>
+                        $<span id="priceMini"></span>
+                    </strong>
+
+                </div>
+
+
+                <div class="data-card">
+
+                    <span>
+                        CHANGE
+                    </span>
+
+                    <strong id="change"></strong>
+
+                </div>
+
+
+                <div class="data-card">
+
+                    <span>
+                        STATUS
+                    </span>
+
+                    <strong class="positive-status">
+                        MARKET ACTIVE
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <!-- REPORT FOOTER -->
+
+            <div class="report-footer">
+
+                <span>
+                    FinSight Intelligence Engine
+                </span>
+
+                <span>
+                    Real-time market analysis
+                </span>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ERROR -->
+
+        <p
+            id="errorMsg"
+            class="error-message"
+            style="display: none;"
+        ></p>
+
+
+    </main>
+
+
+
+    <script src="../js/stockAnalyzer.js"></script>
+
+    <script src="../main.js"></script>
 
 </body>
+
 </html>
