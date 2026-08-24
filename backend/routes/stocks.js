@@ -101,18 +101,25 @@ router.get(
       // Get historical price
       // ---------------------------------------------
 
-      const historicalUrl =
-        `https://api.twelvedata.com/time_series` +
-        `?symbol=${encodeURIComponent(ticker)}` +
-        `&interval=1day` +
-        `&start_date=${date}` +
-        `&end_date=${date}` +
-        `&apikey=${TWELVE_DATA_API_KEY}`;
+      const requestedDate = new Date(date);
 
+const startDate = new Date(requestedDate);
+startDate.setDate(startDate.getDate() - 5);
 
-      const historicalResponse =
-        await fetch(historicalUrl);
+const endDate = new Date(requestedDate);
+endDate.setDate(endDate.getDate() + 5);
 
+const formatDate = (d) => {
+  return d.toISOString().split("T")[0];
+};
+
+const historicalUrl =
+  `https://api.twelvedata.com/time_series` +
+  `?symbol=${encodeURIComponent(ticker)}` +
+  `&interval=1day` +
+  `&start_date=${formatDate(startDate)}` +
+  `&end_date=${formatDate(endDate)}` +
+  `&apikey=${TWELVE_DATA_API_KEY}`;
 
       const historicalData =
         await historicalResponse.json();
@@ -155,10 +162,30 @@ router.get(
 
 
       // First historical result
-      const historicalPrice =
-        parseFloat(
-          historicalData.values[0].close
-        );
+     const requestedTimestamp =
+  new Date(date).getTime();
+
+const closestValue =
+  historicalData.values.reduce((closest, current) => {
+
+    const currentTimestamp =
+      new Date(current.datetime).getTime();
+
+    const closestTimestamp =
+      new Date(closest.datetime).getTime();
+
+    return Math.abs(currentTimestamp - requestedTimestamp) <
+      Math.abs(closestTimestamp - requestedTimestamp)
+        ? current
+        : closest;
+
+  });
+
+const historicalPrice =
+  parseFloat(closestValue.close);
+
+const actualHistoricalDate =
+  closestValue.datetime;
 
 
       // ---------------------------------------------
@@ -208,7 +235,7 @@ router.get(
 
         ticker: ticker,
 
-        dateRequested: date,
+       dateRequested: actualHistoricalDate,
 
         priceOnDate: historicalPrice,
 
