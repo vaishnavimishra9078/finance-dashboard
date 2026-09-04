@@ -23,166 +23,356 @@
         </nav>
     </header>
 
-    <main>
-    <h2>Learning Hub</h2>
 
-    <p style="color:#888;">
-        Investing and personal finance basics.
-    </p>
+    <main class="learning-page">
 
-    <div style="display:flex; gap:8px; flex-wrap:wrap; margin:16px 0;">
+        <!-- ================= HERO ================= -->
 
-        <button class="topicTab" data-target="topic1">
-            Stock Market Basics
-        </button>
+        <section class="learning-hero">
 
-        <button class="topicTab" data-target="topic2">
-            Key Metrics Explained
-        </button>
+            <div class="learning-intro">
 
-        <button class="topicTab" data-target="topic3">
-            Diversification
-        </button>
+                <div class="learning-label">
+                    FINANCE ACADEMY
+                </div>
 
-        <button class="topicTab" data-target="topic4">
-            Risk & Return
-        </button>
+                <h2>
+                    Learn Finance.<br>
+                    <span>Think Smarter.</span>
+                </h2>
 
-    </div>
+                <p>
+                    Explore investing, markets, risk and financial
+                    intelligence through simple interactive lessons.
+                </p>
 
+                <div class="learning-mini-stats">
 
-    <div id="topic1" class="topicSection card" style="max-width:700px;">
+                    <div>
+                        <strong>04</strong>
+                        <span>Topics</span>
+                    </div>
 
-        <h3>Stock Market Basics</h3>
+                    <div>
+                        <strong>∞</strong>
+                        <span>Knowledge</span>
+                    </div>
 
-        <p>
-            A stock represents partial ownership in a company.
-            When you buy a share, you own a small piece of that
-            business and can benefit if it grows in value or pays dividends.
-        </p>
+                    <div>
+                        <strong>01</strong>
+                        <span>Hub</span>
+                    </div>
 
-        <p>
-            Stocks trade on exchanges like the NYSE or Nasdaq.
-            Prices move based on supply and demand — driven by
-            company performance, economic news, and investor sentiment.
-        </p>
+                </div>
 
-        <p><strong>Key terms:</strong></p>
-
-        <ul>
-            <li>
-                <strong>Bull market</strong> — prices generally rising
-            </li>
-
-            <li>
-                <strong>Bear market</strong> — prices generally falling
-            </li>
-
-            <li>
-                <strong>Dividend</strong> — a portion of profit paid to shareholders
-            </li>
-
-            <li>
-                <strong>Market cap</strong> — total value of a company's shares
-                (price × shares outstanding)
-            </li>
-        </ul>
-
-    </div>
+            </div>
 
 
-    <div id="topic2"
-         class="topicSection card"
-         style="max-width:700px; display:none;">
+            <!-- ================= 3D OBJECT ================= -->
 
-        <h3>Key Metrics Explained</h3>
+            <div class="learning-visual">
 
-        <p>
-            <strong>P/E Ratio (Price-to-Earnings):</strong>
-            stock price divided by earnings per share.
-            Shows how much investors pay per dollar of profit.
-            Higher can mean growth expectations, or overvaluation.
-        </p>
+                <div class="learning-orbit orbit-one"></div>
+                <div class="learning-orbit orbit-two"></div>
+                <div class="learning-orbit orbit-three"></div>
 
-        <p>
-            <strong>EPS (Earnings Per Share):</strong>
-            a company's profit divided by its number of shares.
-            Higher generally signals stronger profitability.
-        </p>
+                <div class="learning-glow"></div>
 
-        <p>
-            <strong>Market Cap:</strong>
-            total company value. Often grouped as small-cap,
-            mid-cap, large-cap — affects volatility and growth potential.
-        </p>
+                <div class="learning-core">
 
-        <p>
-            <strong>Beta:</strong>
-            measures a stock's volatility relative to the overall market.
-            Beta of 1 moves with the market; above 1 is more volatile,
-            below 1 is less volatile.
-        </p>
+                    <div class="core-inner">
+                        ₹
+                    </div>
 
-    </div>
+                </div>
 
 
-    <div id="topic3"
-         class="topicSection card"
-         style="max-width:700px; display:none;">
+                <div class="learning-float float-one">
+                    📈
+                </div>
 
-        <h3>Diversification</h3>
+                <div class="learning-float float-two">
+                    %
+                </div>
 
-        <p>
-            Diversification means spreading investments across different
-            assets, sectors, and geographies so no single loss can badly
-            damage your whole portfolio.
-        </p>
+                <div class="learning-float float-three">
+                    $
+                </div>
 
-        <p>
-            The saying "don't put all your eggs in one basket" applies
-            directly — if one stock or sector underperforms, others may
-            offset the loss.
-        </p>
+                <div class="learning-float float-four">
+                    🧠
+                </div>
 
-        <p>
-            This is why the Risk Analyzer in this app scores your portfolio's
-            concentration — a portfolio heavily weighted in one stock is
-            riskier than one spread across many.
-        </p>
+            </div>
 
-    </div>
+        </section>
 
 
-    <div id="topic4"
-         class="topicSection card"
-         style="max-width:700px; display:none;">
+        <!-- ================= TOPICS ================= -->
 
-        <h3>Risk & Return</h3>
+        <section class="learning-content">
 
-        <p>
-            Generally, higher potential returns come with higher risk.
-            Savings accounts are low-risk/low-return; individual stocks
-            are higher-risk/higher-return; leveraged or speculative assets
-            are highest-risk.
-        </p>
+            <div class="learning-section-title">
 
-        <p>
-            Your personal risk tolerance depends on your timeline, goals,
-            and comfort with volatility. Someone investing for retirement
-            in 30 years can typically handle more short-term ups and downs
-            than someone needing the money in 2 years.
-        </p>
+                <span>EXPLORE</span>
 
-        <p>
-            Use the Financial Goals and Risk Analyzer modules together —
-            match your investment risk level to how soon you need the money.
-        </p>
+                <h3>
+                    Choose your learning path
+                </h3>
 
-    </div>
+            </div>
 
-</main>
-<script src="../js/main.js"></script>
-<script src="../js/learningHub.js"></script>
+
+            <div class="learning-tabs">
+
+                <button
+                    class="topicTab active"
+                    data-target="topic1">
+                    <span>01</span>
+                    Stock Market
+                </button>
+
+                <button
+                    class="topicTab"
+                    data-target="topic2">
+                    <span>02</span>
+                    Key Metrics
+                </button>
+
+                <button
+                    class="topicTab"
+                    data-target="topic3">
+                    <span>03</span>
+                    Diversification
+                </button>
+
+                <button
+                    class="topicTab"
+                    data-target="topic4">
+                    <span>04</span>
+                    Risk & Return
+                </button>
+
+            </div>
+
+
+            <!-- ================= TOPIC 1 ================= -->
+
+            <div
+                id="topic1"
+                class="topicSection learning-topic-panel">
+
+                <div class="topic-number">
+                    01
+                </div>
+
+                <div>
+
+                    <h3>
+                        Stock Market Basics
+                    </h3>
+
+                    <p>
+                        A stock represents partial ownership in a company.
+                        When you buy a share, you own a small piece of that
+                        business and can benefit if it grows in value or pays dividends.
+                    </p>
+
+                    <p>
+                        Stocks trade on exchanges like the NYSE or Nasdaq.
+                        Prices move based on supply and demand — driven by
+                        company performance, economic news, and investor sentiment.
+                    </p>
+
+                    <h4>Key terms</h4>
+
+                    <div class="learning-terms">
+
+                        <div>
+                            <strong>Bull Market</strong>
+                            <span>Prices generally rising</span>
+                        </div>
+
+                        <div>
+                            <strong>Bear Market</strong>
+                            <span>Prices generally falling</span>
+                        </div>
+
+                        <div>
+                            <strong>Dividend</strong>
+                            <span>Profit paid to shareholders</span>
+                        </div>
+
+                        <div>
+                            <strong>Market Cap</strong>
+                            <span>Company's total market value</span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- ================= TOPIC 2 ================= -->
+
+            <div
+                id="topic2"
+                class="topicSection learning-topic-panel"
+                style="display:none;">
+
+                <div class="topic-number">
+                    02
+                </div>
+
+                <div>
+
+                    <h3>
+                        Key Metrics Explained
+                    </h3>
+
+                    <div class="metric-list">
+
+                        <div>
+                            <strong>P/E Ratio</strong>
+                            <p>
+                                Shows how much investors pay for each
+                                dollar of company earnings.
+                            </p>
+                        </div>
+
+                        <div>
+                            <strong>EPS</strong>
+                            <p>
+                                Earnings per share measures the profit
+                                attributable to each share.
+                            </p>
+                        </div>
+
+                        <div>
+                            <strong>Market Cap</strong>
+                            <p>
+                                The total market value of a company's
+                                outstanding shares.
+                            </p>
+                        </div>
+
+                        <div>
+                            <strong>Beta</strong>
+                            <p>
+                                Measures a stock's volatility relative
+                                to the overall market.
+                            </p>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- ================= TOPIC 3 ================= -->
+
+            <div
+                id="topic3"
+                class="topicSection learning-topic-panel"
+                style="display:none;">
+
+                <div class="topic-number">
+                    03
+                </div>
+
+                <div>
+
+                    <h3>
+                        Diversification
+                    </h3>
+
+                    <p>
+                        Diversification means spreading investments
+                        across different assets, sectors and geographies.
+                    </p>
+
+                    <p>
+                        If one stock or sector performs poorly,
+                        other investments may help reduce the overall
+                        impact on your portfolio.
+                    </p>
+
+                    <div class="learning-highlight">
+
+                        <span>FINANCE PRINCIPLE</span>
+
+                        <strong>
+                            Don't put all your eggs in one basket.
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- ================= TOPIC 4 ================= -->
+
+            <div
+                id="topic4"
+                class="topicSection learning-topic-panel"
+                style="display:none;">
+
+                <div class="topic-number">
+                    04
+                </div>
+
+                <div>
+
+                    <h3>
+                        Risk & Return
+                    </h3>
+
+                    <p>
+                        Generally, higher potential returns come with
+                        higher risk.
+                    </p>
+
+                    <div class="risk-scale">
+
+                        <div>
+                            <span>LOW</span>
+                            <strong>Savings</strong>
+                        </div>
+
+                        <div>
+                            <span>MEDIUM</span>
+                            <strong>Funds</strong>
+                        </div>
+
+                        <div>
+                            <span>HIGH</span>
+                            <strong>Stocks</strong>
+                        </div>
+
+                    </div>
+
+                    <p>
+                        Your personal risk tolerance depends on your
+                        timeline, goals and comfort with market volatility.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <script src="../js/main.js"></script>
+    <script src="../js/learningHub.js"></script>
 
 </body>
 

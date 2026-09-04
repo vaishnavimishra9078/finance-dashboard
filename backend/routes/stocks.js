@@ -251,55 +251,150 @@ router.get("/:ticker/history/:date", async (req, res) => {
 // =====================================================
 // CURRENT STOCK PRICE
 // GET /api/stocks/AAPL
+// GET /api/stocks/RELIANCE
 // =====================================================
 
 router.get("/:ticker", async (req, res) => {
 
   try {
 
-    const ticker =
-      req.params.ticker.toUpperCase();
+    const originalTicker =
+      req.params.ticker.trim().toUpperCase();
 
 
-    const url =
-      `https://api.twelvedata.com/quote?symbol=${encodeURIComponent(ticker)}` +
-      `&apikey=${TWELVE_DATA_API_KEY}`;
+    // -------------------------------------------------
+    // Possible symbols to try
+    // -------------------------------------------------
+
+    const symbolsToTry = [
+      originalTicker,
+
+      // Indian NSE
+      `${originalTicker}:NSE`,
+
+      // Indian BSE
+      `${originalTicker}:BSE`
+    ];
 
 
-    const response =
-      await fetch(url);
+    let data = null;
+    let workingSymbol = null;
 
 
-    const data =
-      await response.json();
+    // -------------------------------------------------
+    // Try each symbol
+    // -------------------------------------------------
 
+    for (const symbol of symbolsToTry) {
 
-    if (data.status === "error") {
-
-      console.error(
-        "Twelve Data error:",
-        data
+      console.log(
+        "Trying stock symbol:",
+        symbol
       );
 
-      return res.status(400).json({
+
+      const url =
+        `https://api.twelvedata.com/quote` +
+        `?symbol=${encodeURIComponent(symbol)}` +
+        `&apikey=${TWELVE_DATA_API_KEY}`;
+
+
+      const response =
+        await fetch(url);
+
+
+      const result =
+        await response.json();
+
+
+      console.log(
+        "Twelve Data response:",
+        result
+      );
+
+
+      // Twelve Data returned valid data
+      if (
+        result &&
+        result.status !== "error" &&
+        result.close !== undefined &&
+        result.close !== null &&
+        result.close !== ""
+      ) {
+
+        data = result;
+
+        workingSymbol = symbol;
+
+        break;
+
+      }
+
+    }
+
+
+    // -------------------------------------------------
+    // No stock found
+    // -------------------------------------------------
+
+    if (!data) {
+
+      return res.status(404).json({
+
         error:
-          data.message ||
-          "Unable to fetch stock data"
+          `Stock "${originalTicker}" was not found.`
+
       });
 
     }
 
 
+    // -------------------------------------------------
+    // Convert price
+    // -------------------------------------------------
+
+    const price =
+      parseFloat(data.close);
+
+
+    if (isNaN(price)) {
+
+      return res.status(400).json({
+
+        error:
+          "Stock price is unavailable."
+
+      });
+
+    }
+
+
+    // -------------------------------------------------
+    // Send result
+    // -------------------------------------------------
+
     res.json({
 
-      symbol: data.symbol,
+      symbol:
+        data.symbol || workingSymbol,
 
-      price: data.close,
+      requestedSymbol:
+        originalTicker,
 
-      change: data.change,
+      price:
+        data.close,
+
+      change:
+        data.change || "0",
 
       changePercent:
-        data.percent_change
+        data.percent_change || "0",
+
+      currency:
+        data.currency || null,
+
+      exchange:
+        data.exchange || null
 
     });
 
@@ -311,14 +406,14 @@ router.get("/:ticker", async (req, res) => {
       error
     );
 
+
     res.status(500).json({
+
       error:
         "Failed to fetch stock data"
+
     });
 
   }
 
 });
-
-
-module.exports = router;

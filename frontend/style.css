@@ -9354,110 +9354,6 @@ body:has(#currency) #settingsMessage {
     opacity: 0.8;
 }
 
-
-/* MIC STICK */
-
-.mic-stick {
-    position: absolute;
-
-    width: 5px;
-    height: 45px;
-
-    top: 82px;
-    left: 50%;
-
-    transform: translateX(-50%);
-
-    background: #8073d6;
-}
-
-
-/* MIC BASE */
-
-.mic-base {
-    position: absolute;
-
-    width: 55px;
-    height: 7px;
-
-    top: 122px;
-    left: 50%;
-
-    transform: translateX(-50%);
-
-    border-radius: 10px;
-
-    background:
-        linear-gradient(
-            90deg,
-            #7063d0,
-            #a080ff
-        );
-
-    box-shadow:
-        0 0 15px rgba(126, 103, 255, 0.5);
-}
-
-
-/* MIC ORBITS */
-
-.mic-orbit {
-    position: absolute;
-
-    width: 100px;
-    height: 100px;
-
-    left: 50%;
-    top: 3px;
-
-    transform: translateX(-50%);
-
-    border: 1px solid rgba(103, 196, 255, 0.25);
-
-    border-radius: 50%;
-}
-
-.orbit-a {
-    transform:
-        translateX(-50%)
-        rotateX(65deg);
-
-    animation:
-        orbitRotate 4s linear infinite;
-}
-
-.orbit-b {
-    transform:
-        translateX(-50%)
-        rotateY(65deg);
-
-    animation:
-        orbitRotateReverse 5s linear infinite;
-}
-
-@keyframes orbitRotate {
-
-    from {
-        rotate: 0deg;
-    }
-
-    to {
-        rotate: 360deg;
-    }
-}
-
-@keyframes orbitRotateReverse {
-
-    from {
-        rotate: 360deg;
-    }
-
-    to {
-        rotate: 0deg;
-    }
-}
-
-
 /* =========================================================
    ROBOT STATUS
 ========================================================= */
@@ -20909,5 +20805,2344 @@ body:has(#currency) #settingsMessage {
 
     .simulator-visual {
         height: 320px;
+    }
+}
+/* =====================================================
+   PREMIUM LEARNING HUB
+===================================================== */
+
+.learning-page {
+    position: relative;
+    overflow: hidden;
+    min-height: calc(100vh - 80px);
+    padding: 45px 7%;
+}
+
+
+/* BACKGROUND LIGHT */
+
+.learning-page::before {
+    content: "";
+    position: absolute;
+
+    width: 500px;
+    height: 500px;
+
+    top: -220px;
+    right: -100px;
+
+    border-radius: 50%;
+
+    background: rgba(111, 76, 255, 0.14);
+
+    filter: blur(100px);
+
+    pointer-events: none;
+}
+
+
+.learning-page::after {
+    content: "";
+
+    position: absolute;
+
+    width: 400px;
+    height: 400px;
+
+    bottom: -250px;
+    left: -100px;
+
+    border-radius: 50%;
+
+    background: rgba(0, 180, 255, 0.08);
+
+    filter: blur(100px);
+
+    pointer-events: none;
+}
+
+
+/* =====================================================
+   HERO
+===================================================== */
+
+.learning-hero {
+    position: relative;
+    z-index: 2;
+
+    min-height: 470px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 50px;
+}
+
+
+.learning-intro {
+    max-width: 650px;
+
+    animation:
+        learningReveal 1s ease forwards;
+}
+
+
+.learning-label {
+    display: inline-block;
+
+    padding: 8px 15px;
+
+    border-radius: 30px;
+
+    border: 1px solid rgba(139, 92, 246, 0.35);
+
+    color: #a78bfa;
+
+    font-size: 10px;
+
+    letter-spacing: 3px;
+
+    background: rgba(139, 92, 246, 0.07);
+}
+
+
+.learning-intro h2 {
+    margin: 25px 0 20px;
+
+    font-size: clamp(48px, 6vw, 82px);
+
+    line-height: .95;
+
+    letter-spacing: -5px;
+}
+
+
+.learning-intro h2 span {
+    background:
+        linear-gradient(
+            90deg,
+            #8b5cf6,
+            #38bdf8
+        );
+
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+
+.learning-intro p {
+    max-width: 570px;
+
+    color: #9298aa;
+
+    font-size: 16px;
+
+    line-height: 1.7;
+}
+
+
+/* =====================================================
+   MINI STATS
+===================================================== */
+
+.learning-mini-stats {
+    display: flex;
+
+    gap: 45px;
+
+    margin-top: 35px;
+}
+
+
+.learning-mini-stats div {
+    display: flex;
+    flex-direction: column;
+}
+
+
+.learning-mini-stats strong {
+    font-size: 24px;
+}
+
+
+.learning-mini-stats span {
+    margin-top: 4px;
+
+    color: #73798b;
+
+    font-size: 11px;
+
+    letter-spacing: 1px;
+}
+
+
+/* =====================================================
+   3D LEARNING OBJECT
+===================================================== */
+
+.learning-visual {
+    position: relative;
+
+    width: 450px;
+    height: 450px;
+
+    flex-shrink: 0;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    animation:
+        learningObjectFloat 6s ease-in-out infinite;
+}
+
+
+.learning-glow {
+    position: absolute;
+
+    width: 240px;
+    height: 240px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(130, 90, 255, .55),
+            transparent 70%
+        );
+
+    filter: blur(20px);
+
+    animation:
+        learningGlow 4s ease-in-out infinite;
+}
+
+
+/* CORE */
+
+.learning-core {
+    position: relative;
+
+    z-index: 5;
+
+    width: 175px;
+    height: 175px;
+
+    border-radius: 50%;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    background:
+        radial-gradient(
+            circle at 30% 25%,
+            white 0%,
+            #c4b5fd 5%,
+            #8b5cf6 25%,
+            #35206e 58%,
+            #100b20 100%
+        );
+
+    box-shadow:
+        0 0 30px rgba(139,92,246,.9),
+        0 0 90px rgba(96,165,250,.35),
+        inset -20px -20px 40px rgba(0,0,0,.55);
+
+    animation:
+        coreBreathing 4s ease-in-out infinite;
+}
+
+
+.core-inner {
+    font-size: 68px;
+
+    font-weight: 800;
+
+    color: white;
+
+    text-shadow:
+        0 0 25px rgba(255,255,255,.8);
+}
+
+
+/* =====================================================
+   ORBITS
+===================================================== */
+
+.learning-orbit {
+    position: absolute;
+
+    border-radius: 50%;
+
+    border: 1px solid rgba(139,92,246,.5);
+
+    transform-style: preserve-3d;
+}
+
+
+.orbit-one {
+    width: 320px;
+    height: 120px;
+
+    transform:
+        rotateX(65deg)
+        rotateZ(-20deg);
+
+    animation:
+        orbitOne 8s linear infinite;
+}
+
+
+.orbit-two {
+    width: 370px;
+    height: 145px;
+
+    transform:
+        rotateX(65deg)
+        rotateZ(55deg);
+
+    border-color:
+        rgba(56,189,248,.35);
+
+    animation:
+        orbitTwo 11s linear infinite;
+}
+
+
+.orbit-three {
+    width: 280px;
+    height: 280px;
+
+    border-color:
+        rgba(167,139,250,.18);
+
+    animation:
+        orbitThree 15s linear infinite;
+}
+
+
+/* =====================================================
+   FLOATING ICONS
+===================================================== */
+
+.learning-float {
+    position: absolute;
+
+    z-index: 10;
+
+    width: 55px;
+    height: 55px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 17px;
+
+    font-size: 21px;
+
+    background:
+        rgba(18,20,35,.78);
+
+    border:
+        1px solid rgba(255,255,255,.1);
+
+    backdrop-filter:
+        blur(15px);
+
+    box-shadow:
+        0 15px 40px rgba(0,0,0,.4);
+
+    animation:
+        floatIcon 4s ease-in-out infinite;
+}
+
+
+.float-one {
+    top: 35px;
+    right: 75px;
+}
+
+
+.float-two {
+    right: 10px;
+    bottom: 100px;
+
+    animation-delay: 1s;
+}
+
+
+.float-three {
+    left: 20px;
+    bottom: 80px;
+
+    animation-delay: 2s;
+}
+
+
+.float-four {
+    left: 60px;
+    top: 80px;
+
+    animation-delay: 1.5s;
+}
+
+
+/* =====================================================
+   TOPIC AREA
+===================================================== */
+
+.learning-content {
+    position: relative;
+
+    z-index: 3;
+
+    margin-top: 20px;
+}
+
+
+.learning-section-title span {
+    font-size: 10px;
+
+    letter-spacing: 3px;
+
+    color: #8b5cf6;
+}
+
+
+.learning-section-title h3 {
+    margin: 7px 0 25px;
+
+    font-size: 30px;
+}
+
+
+/* =====================================================
+   TABS
+===================================================== */
+
+.learning-tabs {
+    display: flex;
+
+    gap: 10px;
+
+    flex-wrap: wrap;
+
+    margin-bottom: 20px;
+}
+
+
+.topicTab {
+    position: relative;
+
+    padding: 13px 18px;
+
+    border-radius: 15px;
+
+    border: 1px solid rgba(255,255,255,.08);
+
+    background:
+        rgba(255,255,255,.035);
+
+    color: #9ba1b2;
+
+    cursor: pointer;
+
+    transition:
+        .35s ease;
+}
+
+
+.topicTab span {
+    margin-right: 8px;
+
+    color: #666d7f;
+
+    font-size: 10px;
+}
+
+
+.topicTab:hover {
+    transform: translateY(-3px);
+
+    color: white;
+
+    border-color:
+        rgba(139,92,246,.35);
+}
+
+
+.topicTab.active {
+    color: white;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(139,92,246,.25),
+            rgba(56,189,248,.12)
+        );
+
+    border-color:
+        rgba(139,92,246,.45);
+
+    box-shadow:
+        0 10px 35px rgba(80,60,180,.18);
+}
+
+
+/* =====================================================
+   TOPIC PANEL
+===================================================== */
+
+.learning-topic-panel {
+    position: relative;
+
+    max-width: 950px;
+
+    display: grid;
+
+    grid-template-columns: 80px 1fr;
+
+    gap: 25px;
+
+    padding: 35px;
+
+    border-radius: 28px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.07),
+            rgba(255,255,255,.025)
+        );
+
+    border:
+        1px solid rgba(255,255,255,.08);
+
+    backdrop-filter:
+        blur(20px);
+
+    overflow: hidden;
+}
+
+
+.learning-topic-panel::before {
+    content: "";
+
+    position: absolute;
+
+    width: 220px;
+    height: 220px;
+
+    right: -100px;
+    top: -100px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(139,92,246,.12);
+
+    filter: blur(60px);
+}
+
+
+.topic-enter {
+    animation:
+        topicEnter .5s ease forwards;
+}
+
+
+.topic-number {
+    font-size: 42px;
+
+    font-weight: 800;
+
+    color: rgba(139,92,246,.45);
+}
+
+
+.learning-topic-panel h3 {
+    margin: 0 0 18px;
+
+    font-size: 28px;
+}
+
+
+.learning-topic-panel p {
+    color: #9096a8;
+
+    line-height: 1.75;
+
+    font-size: 14px;
+}
+
+
+.learning-topic-panel h4 {
+    margin-top: 28px;
+
+    font-size: 12px;
+
+    letter-spacing: 2px;
+
+    color: #8b5cf6;
+}
+
+
+/* =====================================================
+   TERMS
+===================================================== */
+
+.learning-terms {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 10px;
+
+    margin-top: 15px;
+}
+
+
+.learning-terms div {
+    padding: 15px;
+
+    border-radius: 15px;
+
+    background:
+        rgba(255,255,255,.035);
+
+    border:
+        1px solid rgba(255,255,255,.06);
+
+    transition: .3s;
+}
+
+
+.learning-terms div:hover {
+    transform: translateY(-4px);
+
+    background:
+        rgba(139,92,246,.08);
+}
+
+
+.learning-terms strong {
+    display: block;
+
+    font-size: 13px;
+}
+
+
+.learning-terms span {
+    display: block;
+
+    margin-top: 5px;
+
+    color: #747b8d;
+
+    font-size: 11px;
+}
+
+
+/* =====================================================
+   METRICS
+===================================================== */
+
+.metric-list {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 12px;
+}
+
+
+.metric-list div {
+    padding: 18px;
+
+    border-radius: 17px;
+
+    background:
+        rgba(255,255,255,.035);
+
+    border:
+        1px solid rgba(255,255,255,.06);
+}
+
+
+.metric-list strong {
+    color: #a78bfa;
+}
+
+
+.metric-list p {
+    margin-bottom: 0;
+}
+
+
+/* =====================================================
+   HIGHLIGHT
+===================================================== */
+
+.learning-highlight {
+    margin-top: 25px;
+
+    padding: 22px;
+
+    border-left:
+        3px solid #8b5cf6;
+
+    background:
+        rgba(139,92,246,.07);
+
+    border-radius:
+        0 15px 15px 0;
+}
+
+
+.learning-highlight span {
+    display: block;
+
+    font-size: 9px;
+
+    letter-spacing: 2px;
+
+    color: #8b5cf6;
+}
+
+
+.learning-highlight strong {
+    display: block;
+
+    margin-top: 8px;
+
+    font-size: 17px;
+}
+
+
+/* =====================================================
+   RISK SCALE
+===================================================== */
+
+.risk-scale {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 10px;
+
+    margin: 25px 0;
+}
+
+
+.risk-scale div {
+    padding: 18px;
+
+    border-radius: 15px;
+
+    background:
+        rgba(255,255,255,.04);
+
+    border:
+        1px solid rgba(255,255,255,.07);
+}
+
+
+.risk-scale span {
+    display: block;
+
+    font-size: 9px;
+
+    letter-spacing: 2px;
+
+    color: #73798b;
+}
+
+
+.risk-scale strong {
+    display: block;
+
+    margin-top: 8px;
+}
+
+
+/* =====================================================
+   ANIMATIONS
+===================================================== */
+
+@keyframes learningReveal {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0);
+    }
+
+}
+
+
+@keyframes learningObjectFloat {
+
+    0%,
+    100% {
+        transform:
+            translateY(0)
+            rotate(0deg);
+    }
+
+    50% {
+        transform:
+            translateY(-15px)
+            rotate(2deg);
+    }
+
+}
+
+
+@keyframes learningGlow {
+
+    0%,
+    100% {
+        transform: scale(1);
+
+        opacity: .7;
+    }
+
+    50% {
+        transform: scale(1.15);
+
+        opacity: 1;
+    }
+
+}
+
+
+@keyframes coreBreathing {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.06);
+    }
+
+}
+
+
+@keyframes orbitOne {
+
+    from {
+        transform:
+            rotateX(65deg)
+            rotateZ(0deg);
+    }
+
+    to {
+        transform:
+            rotateX(65deg)
+            rotateZ(360deg);
+    }
+
+}
+
+
+@keyframes orbitTwo {
+
+    from {
+        transform:
+            rotateX(65deg)
+            rotateZ(360deg);
+    }
+
+    to {
+        transform:
+            rotateX(65deg)
+            rotateZ(0deg);
+    }
+
+}
+
+
+@keyframes orbitThree {
+
+    from {
+        transform:
+            rotateY(70deg)
+            rotateZ(0deg);
+    }
+
+    to {
+        transform:
+            rotateY(70deg)
+            rotateZ(360deg);
+    }
+
+}
+
+
+@keyframes floatIcon {
+
+    0%,
+    100% {
+        transform:
+            translateY(0);
+    }
+
+    50% {
+        transform:
+            translateY(-13px);
+    }
+
+}
+
+
+@keyframes topicEnter {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(15px)
+            scale(.98);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1);
+    }
+
+}
+
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media (max-width: 950px) {
+
+    .learning-hero {
+        flex-direction: column;
+
+        text-align: center;
+    }
+
+    .learning-intro {
+        max-width: 700px;
+    }
+
+    .learning-intro p {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .learning-mini-stats {
+        justify-content: center;
+    }
+
+}
+
+
+@media (max-width: 650px) {
+
+    .learning-page {
+        padding: 30px 5%;
+    }
+
+    .learning-visual {
+        transform: scale(.72);
+
+        margin-top: -60px;
+        margin-bottom: -50px;
+    }
+
+    .learning-topic-panel {
+        grid-template-columns: 1fr;
+
+        padding: 25px;
+    }
+
+    .learning-terms,
+    .metric-list {
+        grid-template-columns: 1fr;
+    }
+
+    .risk-scale {
+        grid-template-columns: 1fr;
+    }
+
+}
+```css
+/* =========================================================
+   FINANCE DASHBOARD — GLOBAL PREMIUM UI
+   Replace your COMPLETE style.css with this file
+   ========================================================= */
+
+
+/* =========================================================
+   1. GLOBAL RESET
+   ========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    min-height: 100vh;
+    font-family:
+        Inter,
+        "Segoe UI",
+        Arial,
+        sans-serif;
+
+    color: #f5f7ff;
+
+    background:
+        radial-gradient(
+            circle at 15% 20%,
+            rgba(124, 58, 237, 0.18),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 85% 10%,
+            rgba(37, 99, 235, 0.15),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 50% 90%,
+            rgba(6, 182, 212, 0.08),
+            transparent 30%
+        ),
+        #070914;
+
+    overflow-x: hidden;
+
+    position: relative;
+}
+
+
+/* =========================================================
+   2. ANIMATED BACKGROUND
+   ========================================================= */
+
+body::before {
+    content: "";
+    position: fixed;
+
+    width: 500px;
+    height: 500px;
+
+    left: -180px;
+    top: 120px;
+
+    background: rgba(124, 58, 237, 0.12);
+
+    filter: blur(100px);
+
+    border-radius: 50%;
+
+    pointer-events: none;
+
+    animation: floatingGlow 10s ease-in-out infinite alternate;
+
+    z-index: -2;
+}
+
+body::after {
+    content: "";
+
+    position: fixed;
+
+    width: 450px;
+    height: 450px;
+
+    right: -150px;
+    bottom: 50px;
+
+    background: rgba(37, 99, 235, 0.10);
+
+    filter: blur(100px);
+
+    border-radius: 50%;
+
+    pointer-events: none;
+
+    animation: floatingGlow2 12s ease-in-out infinite alternate;
+
+    z-index: -2;
+}
+
+@keyframes floatingGlow {
+
+    0% {
+        transform: translate(0, 0) scale(1);
+    }
+
+    100% {
+        transform: translate(100px, 80px) scale(1.2);
+    }
+}
+
+@keyframes floatingGlow2 {
+
+    0% {
+        transform: translate(0, 0) scale(1);
+    }
+
+    100% {
+        transform: translate(-100px, -80px) scale(1.15);
+    }
+}
+
+
+/* =========================================================
+   3. HEADER
+   ========================================================= */
+
+header {
+    position: sticky;
+
+    top: 0;
+
+    z-index: 1000;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 25px;
+
+    padding: 18px 5%;
+
+    background: rgba(7, 9, 20, 0.78);
+
+    backdrop-filter: blur(18px);
+
+    -webkit-backdrop-filter: blur(18px);
+
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+
+    box-shadow:
+        0 10px 40px rgba(0, 0, 0, 0.25);
+}
+
+
+/* Logo */
+
+header h1 {
+    font-size: 20px;
+
+    font-weight: 800;
+
+    letter-spacing: 0.5px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #ffffff,
+            #a78bfa,
+            #60a5fa
+        );
+
+    -webkit-background-clip: text;
+    background-clip: text;
+
+    color: transparent;
+
+    white-space: nowrap;
+}
+
+
+/* =========================================================
+   4. NAVIGATION
+   ========================================================= */
+
+nav {
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    flex-wrap: wrap;
+}
+
+nav a {
+    position: relative;
+
+    color: #aeb7d0;
+
+    text-decoration: none;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    padding: 9px 13px;
+
+    border-radius: 10px;
+
+    transition:
+        color 0.25s ease,
+        background 0.25s ease,
+        transform 0.25s ease;
+}
+
+nav a::after {
+    content: "";
+
+    position: absolute;
+
+    left: 50%;
+
+    bottom: 3px;
+
+    width: 0;
+
+    height: 2px;
+
+    background: #8b5cf6;
+
+    border-radius: 10px;
+
+    transform: translateX(-50%);
+
+    transition: width 0.25s ease;
+}
+
+nav a:hover {
+    color: #ffffff;
+
+    background: rgba(139, 92, 246, 0.12);
+
+    transform: translateY(-2px);
+}
+
+nav a:hover::after {
+    width: 60%;
+}
+
+
+/* =========================================================
+   5. MAIN CONTENT
+   ========================================================= */
+
+main {
+    width: min(1200px, 92%);
+
+    margin: 0 auto;
+
+    padding: 55px 0 80px;
+
+    animation: pageEnter 0.7s ease both;
+}
+
+@keyframes pageEnter {
+
+    from {
+        opacity: 0;
+        transform: translateY(18px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* Main headings */
+
+main > h2 {
+    font-size: clamp(30px, 4vw, 46px);
+
+    font-weight: 850;
+
+    letter-spacing: -1.5px;
+
+    margin-bottom: 10px;
+
+    background:
+        linear-gradient(
+            100deg,
+            #ffffff 20%,
+            #c4b5fd 55%,
+            #60a5fa
+        );
+
+    -webkit-background-clip: text;
+    background-clip: text;
+
+    color: transparent;
+}
+
+main > p {
+    color: #8f9ab4;
+
+    line-height: 1.7;
+}
+
+
+/* =========================================================
+   6. CARDS
+   ========================================================= */
+
+.card {
+    position: relative;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255, 255, 255, 0.075),
+            rgba(255, 255, 255, 0.025)
+        );
+
+    border: 1px solid rgba(255, 255, 255, 0.09);
+
+    border-radius: 20px;
+
+    padding: 24px;
+
+    box-shadow:
+        0 20px 60px rgba(0, 0, 0, 0.28),
+        inset 0 1px 0 rgba(255, 255, 255, 0.04);
+
+    backdrop-filter: blur(18px);
+
+    -webkit-backdrop-filter: blur(18px);
+
+    transition:
+        transform 0.3s ease,
+        border-color 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.card::before {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    border-radius: inherit;
+
+    background:
+        linear-gradient(
+            120deg,
+            rgba(139, 92, 246, 0.08),
+            transparent 35%
+        );
+
+    pointer-events: none;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+
+    border-color: rgba(139, 92, 246, 0.35);
+
+    box-shadow:
+        0 25px 70px rgba(0, 0, 0, 0.35),
+        0 0 35px rgba(124, 58, 237, 0.08);
+}
+
+
+/* =========================================================
+   7. BUTTONS
+   ========================================================= */
+
+button {
+    border: none;
+
+    outline: none;
+
+    cursor: pointer;
+
+    color: #ffffff;
+
+    font-weight: 700;
+
+    font-size: 13px;
+
+    padding: 11px 17px;
+
+    border-radius: 11px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #7c3aed,
+            #4f46e5
+        );
+
+    box-shadow:
+        0 8px 25px rgba(99, 102, 241, 0.22);
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        filter 0.25s ease;
+}
+
+button:hover {
+    transform: translateY(-3px);
+
+    filter: brightness(1.12);
+
+    box-shadow:
+        0 12px 30px rgba(99, 102, 241, 0.35);
+}
+
+button:active {
+    transform: translateY(0) scale(0.98);
+}
+
+
+/* =========================================================
+   8. INPUTS
+   ========================================================= */
+
+input,
+select,
+textarea {
+    width: 100%;
+
+    min-height: 44px;
+
+    padding: 11px 14px;
+
+    border-radius: 11px;
+
+    border: 1px solid rgba(255, 255, 255, 0.10);
+
+    outline: none;
+
+    color: #ffffff;
+
+    background: rgba(13, 17, 35, 0.85);
+
+    font-size: 14px;
+
+    transition:
+        border-color 0.25s ease,
+        box-shadow 0.25s ease,
+        background 0.25s ease;
+}
+
+input::placeholder,
+textarea::placeholder {
+    color: #68738d;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    border-color: #8b5cf6;
+
+    background: rgba(17, 22, 44, 0.95);
+
+    box-shadow:
+        0 0 0 3px rgba(139, 92, 246, 0.12),
+        0 0 25px rgba(139, 92, 246, 0.08);
+}
+
+
+/* =========================================================
+   9. TAB BUTTONS
+   Learning Hub + Calculators
+   ========================================================= */
+
+.calcTab,
+.topicTab {
+    position: relative;
+
+    background: rgba(255, 255, 255, 0.045);
+
+    border: 1px solid rgba(255, 255, 255, 0.09);
+
+    color: #aeb7d0;
+
+    box-shadow: none;
+
+    overflow: hidden;
+}
+
+.calcTab::before,
+.topicTab::before {
+    content: "";
+
+    position: absolute;
+
+    width: 100px;
+    height: 100px;
+
+    background: rgba(139, 92, 246, 0.18);
+
+    border-radius: 50%;
+
+    filter: blur(25px);
+
+    left: -80px;
+    top: -80px;
+
+    transition: 0.4s;
+}
+
+.calcTab:hover,
+.topicTab:hover {
+    color: white;
+
+    border-color: rgba(139, 92, 246, 0.45);
+
+    background: rgba(139, 92, 246, 0.12);
+
+    box-shadow:
+        0 0 25px rgba(139, 92, 246, 0.12);
+}
+
+.calcTab:hover::before,
+.topicTab:hover::before {
+    left: 70%;
+    top: 30%;
+}
+
+
+/* =========================================================
+   10. RESULT AREAS
+   ========================================================= */
+
+#result,
+#simResult,
+#riskSummary,
+#ciResult,
+#loanResult,
+#retResult {
+    animation: resultAppear 0.45s ease both;
+}
+
+@keyframes resultAppear {
+
+    from {
+        opacity: 0;
+        transform: translateY(10px) scale(0.98);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+
+/* =========================================================
+   11. STOCK ANALYZER RESULT
+   ========================================================= */
+
+#result {
+    position: relative;
+
+    overflow: hidden;
+}
+
+#result::after {
+    content: "";
+
+    position: absolute;
+
+    width: 180px;
+    height: 180px;
+
+    right: -80px;
+    top: -80px;
+
+    border-radius: 50%;
+
+    background: rgba(59, 130, 246, 0.13);
+
+    filter: blur(25px);
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   12. INVESTMENT SIMULATOR
+   ========================================================= */
+
+#simResult {
+    max-width: 700px !important;
+
+    margin-top: 25px;
+
+    padding: 30px !important;
+
+    border-radius: 24px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(30, 27, 75, 0.72),
+            rgba(15, 23, 42, 0.80)
+        );
+
+    border: 1px solid rgba(139, 92, 246, 0.22);
+
+    box-shadow:
+        0 25px 80px rgba(0, 0, 0, 0.35),
+        0 0 50px rgba(124, 58, 237, 0.08);
+}
+
+#simResult h3 {
+    font-size: 28px;
+
+    margin-bottom: 18px;
+
+    color: #ffffff;
+}
+
+#simResult p {
+    color: #aeb7d0;
+
+    line-height: 1.8;
+
+    margin: 8px 0;
+}
+
+#simResult hr {
+    border: none;
+
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+
+    margin: 20px 0;
+}
+
+
+/* =========================================================
+   13. PORTFOLIO CARDS
+   ========================================================= */
+
+#portfolioList > .card,
+#goalsList > .card {
+    animation: cardSlide 0.45s ease both;
+}
+
+@keyframes cardSlide {
+
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* =========================================================
+   14. PORTFOLIO ALLOCATION
+   ========================================================= */
+
+#allocationList {
+    padding: 20px;
+
+    background: rgba(255, 255, 255, 0.035);
+
+    border-radius: 18px;
+
+    border: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+#allocationList > div {
+    padding: 10px 0;
+}
+
+
+/* =========================================================
+   15. FINANCIAL GOALS
+   ========================================================= */
+
+#goalsList {
+    max-width: 800px !important;
+}
+
+#goalsList .card {
+    overflow: hidden;
+}
+
+#goalsList .card h3 {
+    font-size: 20px;
+
+    color: #ffffff;
+}
+
+#goalsList .card input {
+    flex: 1;
+}
+
+
+/* =========================================================
+   16. LEARNING HUB
+   ========================================================= */
+
+.topicSection {
+    max-width: 850px !important;
+
+    margin-top: 25px;
+
+    line-height: 1.8;
+
+    position: relative;
+
+    overflow: hidden;
+}
+
+.topicSection::after {
+    content: "";
+
+    position: absolute;
+
+    width: 250px;
+    height: 250px;
+
+    right: -120px;
+    bottom: -120px;
+
+    border-radius: 50%;
+
+    background: rgba(124, 58, 237, 0.10);
+
+    filter: blur(40px);
+
+    pointer-events: none;
+}
+
+.topicSection h3 {
+    font-size: 25px;
+
+    margin-bottom: 18px;
+
+    color: #ffffff;
+}
+
+.topicSection p {
+    color: #aeb7d0;
+
+    margin-bottom: 17px;
+}
+
+.topicSection ul {
+    padding-left: 22px;
+
+    color: #aeb7d0;
+}
+
+.topicSection li {
+    margin: 8px 0;
+}
+
+.topicSection strong {
+    color: #c4b5fd;
+}
+
+
+/* =========================================================
+   17. CALCULATOR RESULT
+   ========================================================= */
+
+#ciResult,
+#loanResult,
+#retResult {
+    margin-top: 20px !important;
+
+    padding: 18px;
+
+    border-radius: 14px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(124, 58, 237, 0.12),
+            rgba(37, 99, 235, 0.08)
+        );
+
+    border: 1px solid rgba(139, 92, 246, 0.15);
+
+    color: #e8eaff;
+
+    line-height: 2;
+}
+
+
+/* =========================================================
+   18. RISK ANALYZER
+   ========================================================= */
+
+#riskSummary {
+    display: grid !important;
+
+    grid-template-columns:
+        repeat(auto-fit, minmax(220px, 1fr));
+
+    gap: 18px !important;
+}
+
+#riskSummary .card {
+    min-width: 0 !important;
+
+    text-align: center;
+
+    padding: 28px 20px !important;
+}
+
+#riskSummary .card h4 {
+    color: #8f9ab4;
+
+    font-size: 13px;
+
+    text-transform: uppercase;
+
+    letter-spacing: 1px;
+
+    margin-bottom: 12px;
+}
+
+
+/* =========================================================
+   19. CHART.JS CONTAINER
+   ========================================================= */
+
+.chart-container {
+    position: relative;
+
+    width: 100%;
+
+    min-height: 320px;
+
+    padding: 20px;
+
+    margin-top: 20px;
+
+    border-radius: 20px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255, 255, 255, 0.055),
+            rgba(255, 255, 255, 0.018)
+        );
+
+    border: 1px solid rgba(255, 255, 255, 0.08);
+
+    box-shadow:
+        0 20px 50px rgba(0, 0, 0, 0.25);
+}
+
+canvas {
+    max-width: 100%;
+
+    animation: chartAppear 0.8s ease both;
+}
+
+@keyframes chartAppear {
+
+    from {
+        opacity: 0;
+        transform: scale(0.97);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+
+/* =========================================================
+   20. LOADING SKELETON
+   ========================================================= */
+
+.skeleton {
+    position: relative;
+
+    overflow: hidden;
+
+    background: #151a2d;
+
+    border-radius: 10px;
+}
+
+.skeleton::after {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    transform: translateX(-100%);
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255, 255, 255, 0.08),
+            transparent
+        );
+
+    animation: skeletonLoading 1.4s infinite;
+}
+
+@keyframes skeletonLoading {
+
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+.skeleton-text {
+    height: 14px;
+
+    width: 70%;
+
+    margin: 10px 0;
+}
+
+.skeleton-card {
+    height: 130px;
+
+    width: 100%;
+}
+
+
+/* =========================================================
+   21. ERROR MESSAGE
+   ========================================================= */
+
+#errorMsg {
+    margin-top: 15px;
+
+    padding: 12px 15px;
+
+    border-radius: 10px;
+
+    background: rgba(239, 68, 68, 0.08);
+
+    border: 1px solid rgba(239, 68, 68, 0.18);
+
+    color: #fca5a5 !important;
+}
+
+
+/* =========================================================
+   22. TABLES
+   ========================================================= */
+
+table {
+    width: 100%;
+
+    border-collapse: separate;
+
+    border-spacing: 0;
+
+    overflow: hidden;
+
+    border-radius: 15px;
+
+    background: rgba(255, 255, 255, 0.035);
+
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+th {
+    padding: 14px;
+
+    text-align: left;
+
+    color: #a78bfa;
+
+    font-size: 12px;
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.7px;
+
+    background: rgba(139, 92, 246, 0.08);
+}
+
+td {
+    padding: 14px;
+
+    color: #c5ccdf;
+
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+tr {
+    transition: background 0.2s ease;
+}
+
+tr:hover {
+    background: rgba(139, 92, 246, 0.06);
+}
+
+
+/* =========================================================
+   23. BADGES
+   ========================================================= */
+
+.badge {
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 6px;
+
+    padding: 5px 10px;
+
+    border-radius: 999px;
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    background: rgba(139, 92, 246, 0.12);
+
+    color: #c4b5fd;
+
+    border: 1px solid rgba(139, 92, 246, 0.18);
+}
+
+
+/* =========================================================
+   24. GLOWING STATUS DOT
+   ========================================================= */
+
+.status-dot {
+    display: inline-block;
+
+    width: 8px;
+    height: 8px;
+
+    border-radius: 50%;
+
+    background: #22c55e;
+
+    box-shadow:
+        0 0 10px rgba(34, 197, 94, 0.7);
+
+    animation: pulseDot 1.8s infinite;
+}
+
+@keyframes pulseDot {
+
+    0%,
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 0.55;
+        transform: scale(0.75);
+    }
+}
+
+
+/* =========================================================
+   25. LIGHT MODE SUPPORT
+   =========================================================
+   Your existing theme JS can add:
+   body.classList.add("light-mode");
+   ========================================================= */
+
+body.light-mode {
+    color: #172033;
+
+    background:
+        radial-gradient(
+            circle at 15% 20%,
+            rgba(139, 92, 246, 0.10),
+            transparent 30%
+        ),
+        #f5f7fb;
+}
+
+body.light-mode header {
+    background: rgba(255, 255, 255, 0.85);
+
+    border-bottom-color: rgba(15, 23, 42, 0.08);
+}
+
+body.light-mode header h1 {
+    background:
+        linear-gradient(
+            90deg,
+            #312e81,
+            #6d28d9,
+            #2563eb
+        );
+
+    -webkit-background-clip: text;
+    background-clip: text;
+
+    color: transparent;
+}
+
+body.light-mode nav a {
+    color: #475569;
+}
+
+body.light-mode nav a:hover {
+    color: #312e81;
+
+    background: rgba(99, 102, 241, 0.08);
+}
+
+body.light-mode .card,
+body.light-mode .chart-container {
+    background: rgba(255, 255, 255, 0.8);
+
+    border-color: rgba(15, 23, 42, 0.08);
+
+    box-shadow:
+        0 15px 45px rgba(15, 23, 42, 0.08);
+}
+
+body.light-mode main > h2 {
+    background:
+        linear-gradient(
+            90deg,
+            #111827,
+            #4c1d95,
+            #1d4ed8
+        );
+
+    -webkit-background-clip: text;
+    background-clip: text;
+
+    color: transparent;
+}
+
+body.light-mode main > p,
+body.light-mode .topicSection p,
+body.light-mode .topicSection ul {
+    color: #64748b;
+}
+
+body.light-mode input,
+body.light-mode select,
+body.light-mode textarea {
+    color: #172033;
+
+    background: #ffffff;
+
+    border-color: #dbe1ea;
+}
+
+body.light-mode input::placeholder {
+    color: #94a3b8;
+}
+
+body.light-mode .calcTab,
+body.light-mode .topicTab {
+    color: #475569;
+
+    background: #ffffff;
+
+    border-color: #dbe1ea;
+}
+
+body.light-mode #allocationList {
+    background: rgba(255, 255, 255, 0.7);
+
+    border-color: #e2e8f0;
+}
+
+body.light-mode #simResult {
+    background:
+        linear-gradient(
+            145deg,
+            #ffffff,
+            #f5f3ff
+        );
+}
+
+body.light-mode #simResult p {
+    color: #475569;
+}
+
+body.light-mode #ciResult,
+body.light-mode #loanResult,
+body.light-mode #retResult {
+    color: #334155;
+
+    background: #f5f3ff;
+}
+
+
+/* =========================================================
+   26. SCROLLBAR
+   ========================================================= */
+
+::-webkit-scrollbar {
+    width: 9px;
+}
+
+::-webkit-scrollbar-track {
+    background: #080b16;
+}
+
+::-webkit-scrollbar-thumb {
+    background:
+        linear-gradient(
+            #7c3aed,
+            #2563eb
+        );
+
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background:
+        linear-gradient(
+            #8b5cf6,
+            #3b82f6
+        );
+}
+
+
+/* =========================================================
+   27. SELECTION
+   ========================================================= */
+
+::selection {
+    background: rgba(139, 92, 246, 0.35);
+
+    color: white;
+}
+
+
+/* =========================================================
+   28. RESPONSIVE DESIGN
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+    header {
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        padding: 15px 5%;
+    }
+
+    nav {
+        width: 100%;
+
+        overflow-x: auto;
+
+        flex-wrap: nowrap;
+
+        padding-bottom: 3px;
+    }
+
+    nav a {
+        white-space: nowrap;
+    }
+
+    main {
+        padding-top: 35px;
+    }
+}
+
+
+@media (max-width: 600px) {
+
+    main {
+        width: 94%;
+
+        padding-top: 30px;
+    }
+
+    main > h2 {
+        font-size: 30px;
+    }
+
+    .card {
+        padding: 18px;
+
+        border-radius: 16px;
+    }
+
+    input,
+    select,
+    textarea,
+    button {
+        width: 100%;
+    }
+
+    .calcTab,
+    .topicTab {
+        width: auto;
+    }
+
+    .chart-container {
+        min-height: 250px;
+
+        padding: 12px;
+    }
+
+    #riskSummary {
+        grid-template-columns: 1fr !important;
+    }
+}
+
+
+/* =========================================================
+   29. REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+
+        animation-iteration-count: 1 !important;
+
+        transition-duration: 0.01ms !important;
+
+        scroll-behavior: auto !important;
     }
 }
